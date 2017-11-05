@@ -24,6 +24,9 @@ public class Song implements Serializable {
     @Column(name = "song_name")
     private String songName;
 
+    @ManyToOne
+    private Album album;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -44,6 +47,19 @@ public class Song implements Serializable {
 
     public void setSongName(String songName) {
         this.songName = songName;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public Song album(Album album) {
+        this.album = album;
+        return this;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -8,6 +8,10 @@
         <dd>
             <span>{{vm.song.songName}}</span>
         </dd>
+        <dt><span data-translate="rockbible2App.song.album">Album</span></dt>
+        <dd>
+            <a ui-sref="album-detail({id:vm.song.album.id})">{{vm.song.album.albumName}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

@@ -12,6 +12,10 @@
         <dd>
             <span>{{vm.artist.born | date:'mediumDate'}}</span>
         </dd>
+        <dt><span data-translate="rockbible2App.artist.band">Band</span></dt>
+        <dd>
+            <a ui-sref="band-detail({id:vm.artist.band.id})">{{vm.artist.band.nameBand}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

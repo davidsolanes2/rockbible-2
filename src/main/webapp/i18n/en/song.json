@@ -15,7 +15,8 @@
             "detail": {
                 "title": "Song"
             },
-            "songName": "Song Name"
+            "songName": "Song Name",
+            "album": "Album"
         }
     }
 }

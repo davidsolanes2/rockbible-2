@@ -58,6 +58,13 @@ public class CacheConfiguration {
             cm.createCache(com.mycompany.myapp.domain.UserExt.class.getName(), jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.ValoracionAlbum.class.getName(), jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.ValoracionSong.class.getName(), jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".songs", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".albums", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".bands", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".bands", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameAlbums", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".songNames", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameArtists", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -16,7 +16,8 @@
                 "title": "Artist"
             },
             "nameArtist": "Name Artist",
-            "born": "Born"
+            "born": "Born",
+            "band": "Band"
         }
     }
 }

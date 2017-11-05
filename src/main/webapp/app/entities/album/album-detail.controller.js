@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('AlbumDetailController', AlbumDetailController);
 
-    AlbumDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Album'];
+    AlbumDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Album', 'Band', 'Song'];
 
-    function AlbumDetailController($scope, $rootScope, $stateParams, previousState, entity, Album) {
+    function AlbumDetailController($scope, $rootScope, $stateParams, previousState, entity, Album, Band, Song) {
         var vm = this;
 
         vm.album = entity;

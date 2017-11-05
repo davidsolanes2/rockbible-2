@@ -1,6 +1,6 @@
 
 entity Country {
-    countryName String, 
+    countryName String,
     locationGoogleMaps String,
     latitude Double,
     logitude Double
@@ -79,6 +79,11 @@ entity ValoracionSong{
     timestamp ZonedDateTime
 }
 
+relationship ManyToOne {
+    Album{band(nameBand)} to Band{nameAlbum},
+    Song{album(albumName)} to Album{songName},
+    Artist{band(nameBand)} to Band
+}
 
 
 

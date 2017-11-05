@@ -19,7 +19,8 @@
             "locationGoogleMaps": "Location Google Maps",
             "latitude": "Latitude",
             "logitude": "Logitude",
-            "status": "Status"
+            "status": "Status",
+            "nameAlbum": "Name Album"
         }
     }
 }

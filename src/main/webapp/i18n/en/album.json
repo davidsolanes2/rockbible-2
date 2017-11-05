@@ -16,7 +16,9 @@
                 "title": "Album"
             },
             "albumName": "Album Name",
-            "numSongs": "Num Songs"
+            "numSongs": "Num Songs",
+            "band": "Band",
+            "songName": "Song Name"
         }
     }
 }

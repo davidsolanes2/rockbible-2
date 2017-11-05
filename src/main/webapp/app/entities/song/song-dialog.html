@@ -20,6 +20,12 @@
                     />
         </div>
 
+        <div class="form-group">
+            <label data-translate="rockbible2App.song.album" for="field_album">Album</label>
+            <select class="form-control" id="field_album" name="album" ng-model="vm.song.album" ng-options="album as album.albumName for album in vm.albums track by album.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

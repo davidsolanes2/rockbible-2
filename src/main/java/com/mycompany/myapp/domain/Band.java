@@ -1,11 +1,14 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Band.
@@ -35,6 +38,11 @@ public class Band implements Serializable {
 
     @Column(name = "status")
     private Boolean status;
+
+    @OneToMany(mappedBy = "band")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Album> nameAlbums = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -108,6 +116,31 @@ public class Band implements Serializable {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public Set<Album> getNameAlbums() {
+        return nameAlbums;
+    }
+
+    public Band nameAlbums(Set<Album> albums) {
+        this.nameAlbums = albums;
+        return this;
+    }
+
+    public Band addNameAlbum(Album album) {
+        this.nameAlbums.add(album);
+        album.setBand(this);
+        return this;
+    }
+
+    public Band removeNameAlbum(Album album) {
+        this.nameAlbums.remove(album);
+        album.setBand(null);
+        return this;
+    }
+
+    public void setNameAlbums(Set<Album> albums) {
+        this.nameAlbums = albums;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

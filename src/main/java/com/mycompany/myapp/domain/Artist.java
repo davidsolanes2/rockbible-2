@@ -28,6 +28,9 @@ public class Artist implements Serializable {
     @Column(name = "born")
     private LocalDate born;
 
+    @ManyToOne
+    private Band band;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -61,6 +64,19 @@ public class Artist implements Serializable {
 
     public void setBorn(LocalDate born) {
         this.born = born;
+    }
+
+    public Band getBand() {
+        return band;
+    }
+
+    public Artist band(Band band) {
+        this.band = band;
+        return this;
+    }
+
+    public void setBand(Band band) {
+        this.band = band;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
