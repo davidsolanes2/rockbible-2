@@ -1,0 +1,21 @@
+{
+    "rockbible2App": {
+        "social" : {
+            "home": {
+                "title": "Socials",
+                "createLabel": "Crear nuevo Social",
+                "createOrEditLabel": "Crear o editar Social"
+            },
+            "created": "Un nuevo Social ha sido creado con el identificador {{ param }}",
+            "updated": "Un Social ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Social ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Social {{ id }}?"
+            },
+            "detail": {
+                "title": "Social"
+            },
+            "nameSocial": "Name Social"
+        }
+    }
+}

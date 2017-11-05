@@ -1,0 +1,89 @@
+
+entity Country {
+    countryName String, 
+    locationGoogleMaps String,
+    latitude Double,
+    logitude Double
+}
+
+entity Genre {
+	genreName String
+}
+
+entity Sex {
+	sexName String
+}
+
+entity Status {
+	statusName String
+}
+
+entity Album {
+	albumName String
+    numSongs Integer
+}
+
+entity Song {
+	songName String
+}
+
+entity Review {
+	reiewName String
+}
+
+entity Artist {
+	nameArtist String,
+    born LocalDate
+}
+
+entity Band{
+	nameBand String,
+    locationGoogleMaps String,
+    latitude Double,
+    logitude Double,
+    status Boolean
+}
+
+entity Collection {
+	nameCollection String
+}
+
+entity Social {
+	nameSocial String
+}
+
+entity Instrument {
+	nameInstrument String
+}
+
+entity Label {
+	nameLabel String
+}
+
+entity UserExt {
+	image ImageBlob,
+    latitude Double,
+    logitude Double,
+    locationGoogleMaps String
+}
+
+entity ValoracionAlbum{
+	puntuacion Integer,
+    like Boolean,
+    timestamp ZonedDateTime
+}
+
+entity ValoracionSong{
+	puntuacion Integer,
+    like Boolean,
+    timestamp ZonedDateTime
+}
+
+
+
+
+
+
+
+
+

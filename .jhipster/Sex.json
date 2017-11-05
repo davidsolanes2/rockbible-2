@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "sexName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171104120020",
+    "entityTableName": "sex",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

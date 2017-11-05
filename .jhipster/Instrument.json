@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nameInstrument",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171104120029",
+    "entityTableName": "instrument",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

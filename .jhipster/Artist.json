@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nameArtist",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "born",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171104120025",
+    "entityTableName": "artist",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
