@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
+import java.util.Objects;
+
+import com.mycompany.myapp.domain.enumeration.Status;
 
 /**
  * A Band.
@@ -26,8 +29,18 @@ public class Band implements Serializable {
     @Column(name = "name_band")
     private String nameBand;
 
+    @Column(name = "location_google_maps")
+    private String locationGoogleMaps;
+
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "logitude")
+    private Double logitude;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Boolean status;
+    private Status status;
 
     @ManyToOne
     private Country country;
@@ -39,6 +52,16 @@ public class Band implements Serializable {
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Album> nameAlbums = new HashSet<>();
+
+    @OneToMany(mappedBy = "band")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Artist> artists = new HashSet<>();
+
+    @ManyToMany(mappedBy = "genreNames")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Genre> nameBands = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -62,16 +85,55 @@ public class Band implements Serializable {
         this.nameBand = nameBand;
     }
 
-    public Boolean isStatus() {
+    public String getLocationGoogleMaps() {
+        return locationGoogleMaps;
+    }
+
+    public Band locationGoogleMaps(String locationGoogleMaps) {
+        this.locationGoogleMaps = locationGoogleMaps;
+        return this;
+    }
+
+    public void setLocationGoogleMaps(String locationGoogleMaps) {
+        this.locationGoogleMaps = locationGoogleMaps;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Band latitude(Double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLogitude() {
+        return logitude;
+    }
+
+    public Band logitude(Double logitude) {
+        this.logitude = logitude;
+        return this;
+    }
+
+    public void setLogitude(Double logitude) {
+        this.logitude = logitude;
+    }
+
+    public Status getStatus() {
         return status;
     }
 
-    public Band status(Boolean status) {
+    public Band status(Status status) {
         this.status = status;
         return this;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -125,6 +187,56 @@ public class Band implements Serializable {
     public void setNameAlbums(Set<Album> albums) {
         this.nameAlbums = albums;
     }
+
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public Band artists(Set<Artist> artists) {
+        this.artists = artists;
+        return this;
+    }
+
+    public Band addArtist(Artist artist) {
+        this.artists.add(artist);
+        artist.setBand(this);
+        return this;
+    }
+
+    public Band removeArtist(Artist artist) {
+        this.artists.remove(artist);
+        artist.setBand(null);
+        return this;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
+    }
+
+    public Set<Genre> getNameBands() {
+        return nameBands;
+    }
+
+    public Band nameBands(Set<Genre> genres) {
+        this.nameBands = genres;
+        return this;
+    }
+
+    public Band addNameBand(Genre genre) {
+        this.nameBands.add(genre);
+        genre.getGenreNames().add(this);
+        return this;
+    }
+
+    public Band removeNameBand(Genre genre) {
+        this.nameBands.remove(genre);
+        genre.getGenreNames().remove(this);
+        return this;
+    }
+
+    public void setNameBands(Set<Genre> genres) {
+        this.nameBands = genres;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -152,7 +264,10 @@ public class Band implements Serializable {
         return "Band{" +
             "id=" + getId() +
             ", nameBand='" + getNameBand() + "'" +
-            ", status='" + isStatus() + "'" +
+            ", locationGoogleMaps='" + getLocationGoogleMaps() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", logitude='" + getLogitude() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

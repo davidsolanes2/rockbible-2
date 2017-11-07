@@ -16,10 +16,15 @@
                 "title": "Band"
             },
             "nameBand": "Name Band",
+            "locationGoogleMaps": "Location Google Maps",
+            "latitude": "Latitude",
+            "logitude": "Logitude",
             "status": "Status",
             "country": "Country",
             "label": "Label",
-            "nameAlbum": "Name Album"
+            "nameAlbum": "Name Album",
+            "artist": "Artist",
+            "nameBand": "Name Band"
         }
     }
 }

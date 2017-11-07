@@ -22,6 +22,8 @@
                     <th><span data-translate="rockbible2App.valoracionAlbum.puntuacion">Puntuacion</span></th>
                     <th><span data-translate="rockbible2App.valoracionAlbum.like">Like</span></th>
                     <th><span data-translate="rockbible2App.valoracionAlbum.timestamp">Timestamp</span></th>
+                    <th><span data-translate="rockbible2App.valoracionAlbum.album">Album</span></th>
+                    <th><span data-translate="rockbible2App.valoracionAlbum.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -31,6 +33,12 @@
                     <td>{{valoracionAlbum.puntuacion}}</td>
                     <td>{{valoracionAlbum.like}}</td>
                     <td>{{valoracionAlbum.timestamp | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="album-detail({id:valoracionAlbum.album.id})">{{valoracionAlbum.album.albumName}}</a>
+                    </td>
+                    <td>
+                        {{valoracionAlbum.user.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

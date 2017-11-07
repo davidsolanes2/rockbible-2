@@ -5,14 +5,15 @@
         .module('rockbible2App')
         .controller('GenreDialogController', GenreDialogController);
 
-    GenreDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Genre'];
+    GenreDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Genre', 'Band'];
 
-    function GenreDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Genre) {
+    function GenreDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Genre, Band) {
         var vm = this;
 
         vm.genre = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.bands = Band.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

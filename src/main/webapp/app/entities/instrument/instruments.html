@@ -20,6 +20,7 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="rockbible2App.instrument.nameInstrument">Name Instrument</span></th>
+                    <th><span data-translate="rockbible2App.instrument.artist">Artist</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,6 +28,11 @@
                 <tr ng-repeat="instrument in vm.instruments track by instrument.id">
                     <td><a ui-sref="instrument-detail({id:instrument.id})">{{instrument.id}}</a></td>
                     <td>{{instrument.nameInstrument}}</td>
+                    <td>
+                        <span ng-repeat="artist in instrument.artists">
+                            <a class="form-control-static" ui-sref="artist-detail({id: artist.id})">{{artist.nameArtist}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

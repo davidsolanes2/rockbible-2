@@ -15,7 +15,9 @@
             "detail": {
                 "title": "Label"
             },
-            "nameLabel": "Name Label"
+            "nameLabel": "Name Label",
+            "band": "Band",
+            "artist": "Artist"
         }
     }
 }

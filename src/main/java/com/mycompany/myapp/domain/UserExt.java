@@ -5,6 +5,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -36,6 +38,17 @@ public class UserExt implements Serializable {
 
     @Column(name = "location_google_maps")
     private String locationGoogleMaps;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "user_ext_album",
+               joinColumns = @JoinColumn(name="user_exts_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="albums_id", referencedColumnName="id"))
+    private Set<Album> albums = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -109,6 +122,44 @@ public class UserExt implements Serializable {
 
     public void setLocationGoogleMaps(String locationGoogleMaps) {
         this.locationGoogleMaps = locationGoogleMaps;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public UserExt user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
+    public UserExt albums(Set<Album> albums) {
+        this.albums = albums;
+        return this;
+    }
+
+    public UserExt addAlbum(Album album) {
+        this.albums.add(album);
+        album.getUsers().add(this);
+        return this;
+    }
+
+    public UserExt removeAlbum(Album album) {
+        this.albums.remove(album);
+        album.getUsers().remove(this);
+        return this;
+    }
+
+    public void setAlbums(Set<Album> albums) {
+        this.albums = albums;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -5,14 +5,15 @@
         .module('rockbible2App')
         .controller('CollectionDialogController', CollectionDialogController);
 
-    CollectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Collection'];
+    CollectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Collection', 'User'];
 
-    function CollectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Collection) {
+    function CollectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Collection, User) {
         var vm = this;
 
         vm.collection = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

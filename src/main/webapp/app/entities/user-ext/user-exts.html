@@ -23,6 +23,8 @@
                     <th><span data-translate="rockbible2App.userExt.latitude">Latitude</span></th>
                     <th><span data-translate="rockbible2App.userExt.logitude">Logitude</span></th>
                     <th><span data-translate="rockbible2App.userExt.locationGoogleMaps">Location Google Maps</span></th>
+                    <th><span data-translate="rockbible2App.userExt.user">User</span></th>
+                    <th><span data-translate="rockbible2App.userExt.album">Album</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -38,6 +40,14 @@
                     <td>{{userExt.latitude}}</td>
                     <td>{{userExt.logitude}}</td>
                     <td>{{userExt.locationGoogleMaps}}</td>
+                    <td>
+                        {{userExt.user.login}}
+                    </td>
+                    <td>
+                        <span ng-repeat="album in userExt.albums">
+                            <a class="form-control-static" ui-sref="album-detail({id: album.id})">{{album.albumName}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

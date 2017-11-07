@@ -19,14 +19,14 @@
             <thead>
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
-                    <th><span data-translate="rockbible2App.review.reiewName">Reiew Name</span></th>
+                    <th><span data-translate="rockbible2App.review.reviewName">Review Name</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="review in vm.reviews track by review.id">
                     <td><a ui-sref="review-detail({id:review.id})">{{review.id}}</a></td>
-                    <td>{{review.reiewName}}</td>
+                    <td>{{review.reviewName}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

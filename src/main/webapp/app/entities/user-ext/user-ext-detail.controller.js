@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('UserExtDetailController', UserExtDetailController);
 
-    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'UserExt'];
+    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'UserExt', 'User', 'Album'];
 
-    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, UserExt) {
+    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, UserExt, User, Album) {
         var vm = this;
 
         vm.userExt = entity;

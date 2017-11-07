@@ -1,4 +1,10 @@
+import _root_.io.gatling.core.scenario.Simulation
+import ch.qos.logback.classic.{Level, LoggerContext}
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import org.slf4j.LoggerFactory
 
+import scala.concurrent.duration._
 
 /**
  * Performance test for the Artist entity.
@@ -62,7 +68,7 @@ class ArtistGatlingTest extends Simulation {
             .exec(http("Create new artist")
             .post("/api/artists")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "nameArtist":"SAMPLE_TEXT", "born":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "nameArtist":"SAMPLE_TEXT", "sexo":null, "born":"2020-01-01T00:00:00.000Z", "status":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_artist_url"))).exitHereIfFailed
             .pause(10)

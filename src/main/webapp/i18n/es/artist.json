@@ -16,10 +16,14 @@
                 "title": "Artist"
             },
             "nameArtist": "Name Artist",
+            "sexo": "Sexo",
             "born": "Born",
+            "status": "Status",
             "band": "Band",
             "country": "Country",
-            "label": "Label"
+            "label": "Label",
+            "review": "Review",
+            "instrument": "Instrument"
         }
     }
 }

@@ -5,6 +5,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -23,6 +25,13 @@ public class Genre implements Serializable {
 
     @Column(name = "genre_name")
     private String genreName;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "genre_genre_name",
+               joinColumns = @JoinColumn(name="genres_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="genre_names_id", referencedColumnName="id"))
+    private Set<Band> genreNames = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -44,6 +53,31 @@ public class Genre implements Serializable {
 
     public void setGenreName(String genreName) {
         this.genreName = genreName;
+    }
+
+    public Set<Band> getGenreNames() {
+        return genreNames;
+    }
+
+    public Genre genreNames(Set<Band> bands) {
+        this.genreNames = bands;
+        return this;
+    }
+
+    public Genre addGenreName(Band band) {
+        this.genreNames.add(band);
+        band.getNameBands().add(this);
+        return this;
+    }
+
+    public Genre removeGenreName(Band band) {
+        this.genreNames.remove(band);
+        band.getNameBands().remove(this);
+        return this;
+    }
+
+    public void setGenreNames(Set<Band> bands) {
+        this.genreNames = bands;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

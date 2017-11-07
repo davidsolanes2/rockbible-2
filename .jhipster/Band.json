@@ -18,6 +18,19 @@
             "relationshipName": "nameAlbum",
             "otherEntityName": "album",
             "otherEntityRelationshipName": "band"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "otherEntityRelationshipName": "band"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "nameBand",
+            "otherEntityName": "genre",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "genreName"
         }
     ],
     "fields": [
@@ -26,8 +39,21 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "locationGoogleMaps",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "latitude",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "logitude",
+            "fieldType": "Double"
+        },
+        {
             "fieldName": "status",
-            "fieldType": "Boolean"
+            "fieldType": "Status",
+            "fieldValues": "ACTIVO,CESADO"
         }
     ],
     "changelogDate": "20171104120026",

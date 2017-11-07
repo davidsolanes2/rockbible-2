@@ -24,6 +24,10 @@ public class Collection implements Serializable {
     @Column(name = "name_collection")
     private String nameCollection;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -44,6 +48,19 @@ public class Collection implements Serializable {
 
     public void setNameCollection(String nameCollection) {
         this.nameCollection = nameCollection;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Collection user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

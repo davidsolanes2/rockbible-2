@@ -1,6 +1,15 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "nameBand",
+            "relationshipName": "genreName",
+            "otherEntityName": "band",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
     "fields": [
         {
             "fieldName": "genreName",

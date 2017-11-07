@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('ValoracionSongDetailController', ValoracionSongDetailController);
 
-    ValoracionSongDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'ValoracionSong'];
+    ValoracionSongDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'ValoracionSong', 'Song', 'User'];
 
-    function ValoracionSongDetailController($scope, $rootScope, $stateParams, previousState, entity, ValoracionSong) {
+    function ValoracionSongDetailController($scope, $rootScope, $stateParams, previousState, entity, ValoracionSong, Song, User) {
         var vm = this;
 
         vm.valoracionSong = entity;

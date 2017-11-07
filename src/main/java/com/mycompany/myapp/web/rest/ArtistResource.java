@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Artist;
+
 import com.mycompany.myapp.repository.ArtistRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -83,7 +85,7 @@ public class ArtistResource {
     @Timed
     public List<Artist> getAllArtists() {
         log.debug("REST request to get all Artists");
-        return artistRepository.findAll();
+        return artistRepository.findAllWithEagerRelationships();
         }
 
     /**
@@ -96,7 +98,7 @@ public class ArtistResource {
     @Timed
     public ResponseEntity<Artist> getArtist(@PathVariable Long id) {
         log.debug("REST request to get Artist : {}", id);
-        Artist artist = artistRepository.findOne(id);
+        Artist artist = artistRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(artist));
     }
 

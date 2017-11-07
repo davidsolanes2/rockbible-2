@@ -5,6 +5,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -23,6 +25,13 @@ public class Instrument implements Serializable {
 
     @Column(name = "name_instrument")
     private String nameInstrument;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "instrument_artist",
+               joinColumns = @JoinColumn(name="instruments_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="artists_id", referencedColumnName="id"))
+    private Set<Artist> artists = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -44,6 +53,31 @@ public class Instrument implements Serializable {
 
     public void setNameInstrument(String nameInstrument) {
         this.nameInstrument = nameInstrument;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public Instrument artists(Set<Artist> artists) {
+        this.artists = artists;
+        return this;
+    }
+
+    public Instrument addArtist(Artist artist) {
+        this.artists.add(artist);
+        artist.getInstruments().add(this);
+        return this;
+    }
+
+    public Instrument removeArtist(Artist artist) {
+        this.artists.remove(artist);
+        artist.getInstruments().remove(this);
+        return this;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

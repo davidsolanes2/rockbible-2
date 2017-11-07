@@ -1,9 +1,11 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.Rockbible2App;
+
 import com.mycompany.myapp.domain.Review;
 import com.mycompany.myapp.repository.ReviewRepository;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,8 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = Rockbible2App.class)
 public class ReviewResourceIntTest {
 
-    private static final String DEFAULT_REIEW_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_REIEW_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_REVIEW_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_REVIEW_NAME = "BBBBBBBBBB";
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -77,7 +79,7 @@ public class ReviewResourceIntTest {
      */
     public static Review createEntity(EntityManager em) {
         Review review = new Review()
-            .reiewName(DEFAULT_REIEW_NAME);
+            .reviewName(DEFAULT_REVIEW_NAME);
         return review;
     }
 
@@ -101,7 +103,7 @@ public class ReviewResourceIntTest {
         List<Review> reviewList = reviewRepository.findAll();
         assertThat(reviewList).hasSize(databaseSizeBeforeCreate + 1);
         Review testReview = reviewList.get(reviewList.size() - 1);
-        assertThat(testReview.getReiewName()).isEqualTo(DEFAULT_REIEW_NAME);
+        assertThat(testReview.getReviewName()).isEqualTo(DEFAULT_REVIEW_NAME);
     }
 
     @Test
@@ -134,7 +136,7 @@ public class ReviewResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(review.getId().intValue())))
-            .andExpect(jsonPath("$.[*].reiewName").value(hasItem(DEFAULT_REIEW_NAME.toString())));
+            .andExpect(jsonPath("$.[*].reviewName").value(hasItem(DEFAULT_REVIEW_NAME.toString())));
     }
 
     @Test
@@ -148,7 +150,7 @@ public class ReviewResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(review.getId().intValue()))
-            .andExpect(jsonPath("$.reiewName").value(DEFAULT_REIEW_NAME.toString()));
+            .andExpect(jsonPath("$.reviewName").value(DEFAULT_REVIEW_NAME.toString()));
     }
 
     @Test
@@ -169,7 +171,7 @@ public class ReviewResourceIntTest {
         // Update the review
         Review updatedReview = reviewRepository.findOne(review.getId());
         updatedReview
-            .reiewName(UPDATED_REIEW_NAME);
+            .reviewName(UPDATED_REVIEW_NAME);
 
         restReviewMockMvc.perform(put("/api/reviews")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -180,7 +182,7 @@ public class ReviewResourceIntTest {
         List<Review> reviewList = reviewRepository.findAll();
         assertThat(reviewList).hasSize(databaseSizeBeforeUpdate);
         Review testReview = reviewList.get(reviewList.size() - 1);
-        assertThat(testReview.getReiewName()).isEqualTo(UPDATED_REIEW_NAME);
+        assertThat(testReview.getReviewName()).isEqualTo(UPDATED_REVIEW_NAME);
     }
 
     @Test

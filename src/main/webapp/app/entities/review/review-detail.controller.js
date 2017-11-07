@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('ReviewDetailController', ReviewDetailController);
 
-    ReviewDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Review'];
+    ReviewDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Review', 'Artist'];
 
-    function ReviewDetailController($scope, $rootScope, $stateParams, previousState, entity, Review) {
+    function ReviewDetailController($scope, $rootScope, $stateParams, previousState, entity, Review, Artist) {
         var vm = this;
 
         vm.review = entity;

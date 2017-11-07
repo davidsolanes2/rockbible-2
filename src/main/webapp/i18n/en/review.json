@@ -15,7 +15,8 @@
             "detail": {
                 "title": "Review"
             },
-            "reiewName": "Reiew Name"
+            "reviewName": "Review Name",
+            "artist": "Artist"
         }
     }
 }

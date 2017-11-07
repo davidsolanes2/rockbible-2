@@ -1,9 +1,10 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.ValoracionAlbum;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 /**
  * Spring Data JPA repository for the ValoracionAlbum entity.
@@ -11,5 +12,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ValoracionAlbumRepository extends JpaRepository<ValoracionAlbum, Long> {
+
+    @Query("select valoracion_album from ValoracionAlbum valoracion_album where valoracion_album.user.login = ?#{principal.username}")
+    List<ValoracionAlbum> findByUserIsCurrentUser();
 
 }

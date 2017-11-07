@@ -1,10 +1,13 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -32,6 +35,16 @@ public class Country implements Serializable {
 
     @Column(name = "logitude")
     private Double logitude;
+
+    @OneToMany(mappedBy = "country")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Band> bands = new HashSet<>();
+
+    @OneToMany(mappedBy = "country")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Artist> artists = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -92,6 +105,56 @@ public class Country implements Serializable {
 
     public void setLogitude(Double logitude) {
         this.logitude = logitude;
+    }
+
+    public Set<Band> getBands() {
+        return bands;
+    }
+
+    public Country bands(Set<Band> bands) {
+        this.bands = bands;
+        return this;
+    }
+
+    public Country addBand(Band band) {
+        this.bands.add(band);
+        band.setCountry(this);
+        return this;
+    }
+
+    public Country removeBand(Band band) {
+        this.bands.remove(band);
+        band.setCountry(null);
+        return this;
+    }
+
+    public void setBands(Set<Band> bands) {
+        this.bands = bands;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public Country artists(Set<Artist> artists) {
+        this.artists = artists;
+        return this;
+    }
+
+    public Country addArtist(Artist artist) {
+        this.artists.add(artist);
+        artist.setCountry(this);
+        return this;
+    }
+
+    public Country removeArtist(Artist artist) {
+        this.artists.remove(artist);
+        artist.setCountry(null);
+        return this;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

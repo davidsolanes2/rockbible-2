@@ -18,7 +18,9 @@
             "image": "Image",
             "latitude": "Latitude",
             "logitude": "Logitude",
-            "locationGoogleMaps": "Location Google Maps"
+            "locationGoogleMaps": "Location Google Maps",
+            "user": "User",
+            "album": "Album"
         }
     }
 }

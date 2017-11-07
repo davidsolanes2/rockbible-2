@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('LabelDetailController', LabelDetailController);
 
-    LabelDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Label'];
+    LabelDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Label', 'Band', 'Artist'];
 
-    function LabelDetailController($scope, $rootScope, $stateParams, previousState, entity, Label) {
+    function LabelDetailController($scope, $rootScope, $stateParams, previousState, entity, Label, Band, Artist) {
         var vm = this;
 
         vm.label = entity;

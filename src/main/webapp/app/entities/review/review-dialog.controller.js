@@ -5,14 +5,15 @@
         .module('rockbible2App')
         .controller('ReviewDialogController', ReviewDialogController);
 
-    ReviewDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Review'];
+    ReviewDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Review', 'Artist'];
 
-    function ReviewDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Review) {
+    function ReviewDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Review, Artist) {
         var vm = this;
 
         vm.review = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.artists = Artist.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

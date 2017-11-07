@@ -8,15 +8,22 @@
             "otherEntityField": "nameBand"
         },
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "valoracionAlbum",
-            "otherEntityName": "valoracionAlbum",
-            "otherEntityField": "puntuacion"
+            "relationshipType": "one-to-many",
+            "relationshipName": "song",
+            "otherEntityName": "song",
+            "otherEntityRelationshipName": "album"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "songName",
-            "otherEntityName": "song",
+            "relationshipName": "valoracion",
+            "otherEntityName": "valoracionAlbum",
+            "otherEntityRelationshipName": "album"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "user",
+            "otherEntityName": "userExt",
+            "ownerSide": false,
             "otherEntityRelationshipName": "album"
         }
     ],

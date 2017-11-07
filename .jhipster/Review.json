@@ -1,9 +1,17 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "review"
+        }
+    ],
     "fields": [
         {
-            "fieldName": "reiewName",
+            "fieldName": "reviewName",
             "fieldType": "String"
         }
     ],

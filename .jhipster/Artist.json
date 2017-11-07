@@ -18,6 +18,21 @@
             "relationshipName": "label",
             "otherEntityName": "label",
             "otherEntityField": "nameLabel"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "artist",
+            "relationshipName": "review",
+            "otherEntityName": "review",
+            "otherEntityField": "reviewName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "instrument",
+            "otherEntityName": "instrument",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "artist"
         }
     ],
     "fields": [
@@ -26,8 +41,18 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "sexo",
+            "fieldType": "Sex",
+            "fieldValues": "HOMBRE,MUJER,OTROS"
+        },
+        {
             "fieldName": "born",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "ACTIVO,CESADO"
         }
     ],
     "changelogDate": "20171104120025",

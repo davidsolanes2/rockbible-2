@@ -15,7 +15,8 @@
             "detail": {
                 "title": "Collection"
             },
-            "nameCollection": "Name Collection"
+            "nameCollection": "Name Collection",
+            "user": "User"
         }
     }
 }

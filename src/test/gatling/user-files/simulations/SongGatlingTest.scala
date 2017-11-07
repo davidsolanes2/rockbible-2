@@ -1,4 +1,10 @@
+import _root_.io.gatling.core.scenario.Simulation
+import ch.qos.logback.classic.{Level, LoggerContext}
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import org.slf4j.LoggerFactory
 
+import scala.concurrent.duration._
 
 /**
  * Performance test for the Song entity.

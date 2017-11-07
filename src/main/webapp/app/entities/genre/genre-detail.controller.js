@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('GenreDetailController', GenreDetailController);
 
-    GenreDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Genre'];
+    GenreDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Genre', 'Band'];
 
-    function GenreDetailController($scope, $rootScope, $stateParams, previousState, entity, Genre) {
+    function GenreDetailController($scope, $rootScope, $stateParams, previousState, entity, Genre, Band) {
         var vm = this;
 
         vm.genre = entity;

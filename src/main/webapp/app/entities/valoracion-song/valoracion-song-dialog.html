@@ -35,6 +35,18 @@
                 </div>
         </div>
 
+        <div class="form-group">
+            <label data-translate="rockbible2App.valoracionSong.song" for="field_song">Song</label>
+            <select class="form-control" id="field_song" name="song" ng-model="vm.valoracionSong.song" ng-options="song as song.songName for song in vm.songs track by song.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="rockbible2App.valoracionSong.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.valoracionSong.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

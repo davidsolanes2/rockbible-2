@@ -1,9 +1,10 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.ValoracionSong;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 /**
  * Spring Data JPA repository for the ValoracionSong entity.
@@ -11,5 +12,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ValoracionSongRepository extends JpaRepository<ValoracionSong, Long> {
+
+    @Query("select valoracion_song from ValoracionSong valoracion_song where valoracion_song.user.login = ?#{principal.username}")
+    List<ValoracionSong> findByUserIsCurrentUser();
 
 }

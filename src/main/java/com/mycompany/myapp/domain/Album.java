@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Album.
@@ -32,13 +33,20 @@ public class Album implements Serializable {
     @ManyToOne
     private Band band;
 
-    @ManyToOne
-    private ValoracionAlbum valoracionAlbum;
+    @OneToMany(mappedBy = "album")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Song> songs = new HashSet<>();
 
     @OneToMany(mappedBy = "album")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Song> songNames = new HashSet<>();
+    private Set<ValoracionAlbum> valoracions = new HashSet<>();
+
+    @ManyToMany(mappedBy = "albums")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<UserExt> users = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,42 +96,79 @@ public class Album implements Serializable {
         this.band = band;
     }
 
-    public ValoracionAlbum getValoracionAlbum() {
-        return valoracionAlbum;
+    public Set<Song> getSongs() {
+        return songs;
     }
 
-    public Album valoracionAlbum(ValoracionAlbum valoracionAlbum) {
-        this.valoracionAlbum = valoracionAlbum;
+    public Album songs(Set<Song> songs) {
+        this.songs = songs;
         return this;
     }
 
-    public void setValoracionAlbum(ValoracionAlbum valoracionAlbum) {
-        this.valoracionAlbum = valoracionAlbum;
-    }
-
-    public Set<Song> getSongNames() {
-        return songNames;
-    }
-
-    public Album songNames(Set<Song> songs) {
-        this.songNames = songs;
-        return this;
-    }
-
-    public Album addSongName(Song song) {
-        this.songNames.add(song);
+    public Album addSong(Song song) {
+        this.songs.add(song);
         song.setAlbum(this);
         return this;
     }
 
-    public Album removeSongName(Song song) {
-        this.songNames.remove(song);
+    public Album removeSong(Song song) {
+        this.songs.remove(song);
         song.setAlbum(null);
         return this;
     }
 
-    public void setSongNames(Set<Song> songs) {
-        this.songNames = songs;
+    public void setSongs(Set<Song> songs) {
+        this.songs = songs;
+    }
+
+    public Set<ValoracionAlbum> getValoracions() {
+        return valoracions;
+    }
+
+    public Album valoracions(Set<ValoracionAlbum> valoracionAlbums) {
+        this.valoracions = valoracionAlbums;
+        return this;
+    }
+
+    public Album addValoracion(ValoracionAlbum valoracionAlbum) {
+        this.valoracions.add(valoracionAlbum);
+        valoracionAlbum.setAlbum(this);
+        return this;
+    }
+
+    public Album removeValoracion(ValoracionAlbum valoracionAlbum) {
+        this.valoracions.remove(valoracionAlbum);
+        valoracionAlbum.setAlbum(null);
+        return this;
+    }
+
+    public void setValoracions(Set<ValoracionAlbum> valoracionAlbums) {
+        this.valoracions = valoracionAlbums;
+    }
+
+    public Set<UserExt> getUsers() {
+        return users;
+    }
+
+    public Album users(Set<UserExt> userExts) {
+        this.users = userExts;
+        return this;
+    }
+
+    public Album addUser(UserExt userExt) {
+        this.users.add(userExt);
+        userExt.getAlbums().add(this);
+        return this;
+    }
+
+    public Album removeUser(UserExt userExt) {
+        this.users.remove(userExt);
+        userExt.getAlbums().remove(this);
+        return this;
+    }
+
+    public void setUsers(Set<UserExt> userExts) {
+        this.users = userExts;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

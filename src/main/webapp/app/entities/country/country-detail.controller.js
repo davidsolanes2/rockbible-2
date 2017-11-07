@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('CountryDetailController', CountryDetailController);
 
-    CountryDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Country'];
+    CountryDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Country', 'Band', 'Artist'];
 
-    function CountryDetailController($scope, $rootScope, $stateParams, previousState, entity, Country) {
+    function CountryDetailController($scope, $rootScope, $stateParams, previousState, entity, Country, Band, Artist) {
         var vm = this;
 
         vm.country = entity;

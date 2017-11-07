@@ -20,6 +20,7 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="rockbible2App.collection.nameCollection">Name Collection</span></th>
+                    <th><span data-translate="rockbible2App.collection.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,6 +28,9 @@
                 <tr ng-repeat="collection in vm.collections track by collection.id">
                     <td><a ui-sref="collection-detail({id:collection.id})">{{collection.id}}</a></td>
                     <td>{{collection.nameCollection}}</td>
+                    <td>
+                        {{collection.user.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

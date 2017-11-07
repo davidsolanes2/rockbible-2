@@ -1,9 +1,11 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.Rockbible2App;
+
 import com.mycompany.myapp.domain.Artist;
 import com.mycompany.myapp.repository.ArtistRepository;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +31,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.mycompany.myapp.domain.enumeration.Sex;
+import com.mycompany.myapp.domain.enumeration.Status;
 /**
  * Test class for the ArtistResource REST controller.
  *
@@ -41,8 +45,14 @@ public class ArtistResourceIntTest {
     private static final String DEFAULT_NAME_ARTIST = "AAAAAAAAAA";
     private static final String UPDATED_NAME_ARTIST = "BBBBBBBBBB";
 
+    private static final Sex DEFAULT_SEXO = Sex.HOMBRE;
+    private static final Sex UPDATED_SEXO = Sex.MUJER;
+
     private static final LocalDate DEFAULT_BORN = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_BORN = LocalDate.now(ZoneId.systemDefault());
+
+    private static final Status DEFAULT_STATUS = Status.ACTIVO;
+    private static final Status UPDATED_STATUS = Status.CESADO;
 
     @Autowired
     private ArtistRepository artistRepository;
@@ -83,7 +93,9 @@ public class ArtistResourceIntTest {
     public static Artist createEntity(EntityManager em) {
         Artist artist = new Artist()
             .nameArtist(DEFAULT_NAME_ARTIST)
-            .born(DEFAULT_BORN);
+            .sexo(DEFAULT_SEXO)
+            .born(DEFAULT_BORN)
+            .status(DEFAULT_STATUS);
         return artist;
     }
 
@@ -108,7 +120,9 @@ public class ArtistResourceIntTest {
         assertThat(artistList).hasSize(databaseSizeBeforeCreate + 1);
         Artist testArtist = artistList.get(artistList.size() - 1);
         assertThat(testArtist.getNameArtist()).isEqualTo(DEFAULT_NAME_ARTIST);
+        assertThat(testArtist.getSexo()).isEqualTo(DEFAULT_SEXO);
         assertThat(testArtist.getBorn()).isEqualTo(DEFAULT_BORN);
+        assertThat(testArtist.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -142,7 +156,9 @@ public class ArtistResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(artist.getId().intValue())))
             .andExpect(jsonPath("$.[*].nameArtist").value(hasItem(DEFAULT_NAME_ARTIST.toString())))
-            .andExpect(jsonPath("$.[*].born").value(hasItem(DEFAULT_BORN.toString())));
+            .andExpect(jsonPath("$.[*].sexo").value(hasItem(DEFAULT_SEXO.toString())))
+            .andExpect(jsonPath("$.[*].born").value(hasItem(DEFAULT_BORN.toString())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
 
     @Test
@@ -157,7 +173,9 @@ public class ArtistResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(artist.getId().intValue()))
             .andExpect(jsonPath("$.nameArtist").value(DEFAULT_NAME_ARTIST.toString()))
-            .andExpect(jsonPath("$.born").value(DEFAULT_BORN.toString()));
+            .andExpect(jsonPath("$.sexo").value(DEFAULT_SEXO.toString()))
+            .andExpect(jsonPath("$.born").value(DEFAULT_BORN.toString()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 
     @Test
@@ -179,7 +197,9 @@ public class ArtistResourceIntTest {
         Artist updatedArtist = artistRepository.findOne(artist.getId());
         updatedArtist
             .nameArtist(UPDATED_NAME_ARTIST)
-            .born(UPDATED_BORN);
+            .sexo(UPDATED_SEXO)
+            .born(UPDATED_BORN)
+            .status(UPDATED_STATUS);
 
         restArtistMockMvc.perform(put("/api/artists")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -191,7 +211,9 @@ public class ArtistResourceIntTest {
         assertThat(artistList).hasSize(databaseSizeBeforeUpdate);
         Artist testArtist = artistList.get(artistList.size() - 1);
         assertThat(testArtist.getNameArtist()).isEqualTo(UPDATED_NAME_ARTIST);
+        assertThat(testArtist.getSexo()).isEqualTo(UPDATED_SEXO);
         assertThat(testArtist.getBorn()).isEqualTo(UPDATED_BORN);
+        assertThat(testArtist.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

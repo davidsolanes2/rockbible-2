@@ -1,10 +1,13 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -23,6 +26,16 @@ public class Label implements Serializable {
 
     @Column(name = "name_label")
     private String nameLabel;
+
+    @OneToMany(mappedBy = "label")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Band> bands = new HashSet<>();
+
+    @OneToMany(mappedBy = "label")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Artist> artists = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -44,6 +57,56 @@ public class Label implements Serializable {
 
     public void setNameLabel(String nameLabel) {
         this.nameLabel = nameLabel;
+    }
+
+    public Set<Band> getBands() {
+        return bands;
+    }
+
+    public Label bands(Set<Band> bands) {
+        this.bands = bands;
+        return this;
+    }
+
+    public Label addBand(Band band) {
+        this.bands.add(band);
+        band.setLabel(this);
+        return this;
+    }
+
+    public Label removeBand(Band band) {
+        this.bands.remove(band);
+        band.setLabel(null);
+        return this;
+    }
+
+    public void setBands(Set<Band> bands) {
+        this.bands = bands;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public Label artists(Set<Artist> artists) {
+        this.artists = artists;
+        return this;
+    }
+
+    public Label addArtist(Artist artist) {
+        this.artists.add(artist);
+        artist.setLabel(this);
+        return this;
+    }
+
+    public Label removeArtist(Artist artist) {
+        this.artists.remove(artist);
+        artist.setLabel(null);
+        return this;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

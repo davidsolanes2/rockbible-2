@@ -20,6 +20,9 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="rockbible2App.band.nameBand">Name Band</span></th>
+                    <th><span data-translate="rockbible2App.band.locationGoogleMaps">Location Google Maps</span></th>
+                    <th><span data-translate="rockbible2App.band.latitude">Latitude</span></th>
+                    <th><span data-translate="rockbible2App.band.logitude">Logitude</span></th>
                     <th><span data-translate="rockbible2App.band.status">Status</span></th>
                     <th><span data-translate="rockbible2App.band.country">Country</span></th>
                     <th><span data-translate="rockbible2App.band.label">Label</span></th>
@@ -30,7 +33,10 @@
                 <tr ng-repeat="band in vm.bands track by band.id">
                     <td><a ui-sref="band-detail({id:band.id})">{{band.id}}</a></td>
                     <td>{{band.nameBand}}</td>
-                    <td>{{band.status}}</td>
+                    <td>{{band.locationGoogleMaps}}</td>
+                    <td>{{band.latitude}}</td>
+                    <td>{{band.logitude}}</td>
+                    <td data-translate="{{'rockbible2App.Status.' + band.status}}">{{band.status}}</td>
                     <td>
                         <a ui-sref="country-detail({id:band.country.id})">{{band.country.countryName}}</a>
                     </td>

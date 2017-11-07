@@ -18,7 +18,9 @@
             "countryName": "Country Name",
             "locationGoogleMaps": "Location Google Maps",
             "latitude": "Latitude",
-            "logitude": "Logitude"
+            "logitude": "Logitude",
+            "band": "Band",
+            "artist": "Artist"
         }
     }
 }

@@ -26,6 +26,8 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('artist');
+                    $translatePartialLoader.addPart('sex');
+                    $translatePartialLoader.addPart('status');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -48,6 +50,8 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('artist');
+                    $translatePartialLoader.addPart('sex');
+                    $translatePartialLoader.addPart('status');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Artist', function($stateParams, Artist) {
@@ -105,7 +109,9 @@
                         entity: function () {
                             return {
                                 nameArtist: null,
+                                sexo: null,
                                 born: null,
+                                status: null,
                                 id: null
                             };
                         }

@@ -58,14 +58,27 @@ public class CacheConfiguration {
             cm.createCache(com.mycompany.myapp.domain.UserExt.class.getName(), jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.ValoracionAlbum.class.getName(), jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.ValoracionSong.class.getName(), jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".songs", jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".albums", jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".bands", jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".bands", jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameAlbums", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Country.class.getName() + ".bands", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Country.class.getName() + ".artists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Genre.class.getName() + ".genreNames", jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".songNames", jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameArtists", jcacheConfiguration);
-            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".labels", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".valoracions", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".users", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Song.class.getName() + ".valoracions", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Artist.class.getName() + ".nameArtists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameAlbums", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".artists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameBands", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Instrument.class.getName() + ".nameInstruments", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Label.class.getName() + ".bands", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Label.class.getName() + ".artists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.UserExt.class.getName() + ".albums", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Review.class.getName() + ".artists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Artist.class.getName() + ".reviews", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".songs", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Artist.class.getName() + ".instruments", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Instrument.class.getName() + ".nameArtists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Instrument.class.getName() + ".artists", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

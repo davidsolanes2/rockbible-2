@@ -22,10 +22,15 @@
     <include file="config/liquibase/changelog/20171104120032_added_entity_ValoracionAlbum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120033_added_entity_ValoracionSong.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20171104120023_added_entity_constraints_Song.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120019_added_entity_constraints_Genre.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120022_added_entity_constraints_Album.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171104120026_added_entity_constraints_Band.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120023_added_entity_constraints_Song.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120025_added_entity_constraints_Artist.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171104120030_added_entity_constraints_Label.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120026_added_entity_constraints_Band.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120029_added_entity_constraints_Instrument.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120031_added_entity_constraints_UserExt.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120032_added_entity_constraints_ValoracionAlbum.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120033_added_entity_constraints_ValoracionSong.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171104120027_added_entity_constraints_Collection.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

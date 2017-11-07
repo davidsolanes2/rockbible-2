@@ -26,6 +26,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('band');
+                    $translatePartialLoader.addPart('status');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -48,6 +49,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('band');
+                    $translatePartialLoader.addPart('status');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Band', function($stateParams, Band) {

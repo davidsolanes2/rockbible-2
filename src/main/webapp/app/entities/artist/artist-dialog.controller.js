@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('ArtistDialogController', ArtistDialogController);
 
-    ArtistDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Artist', 'Band', 'Country', 'Label'];
+    ArtistDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Artist', 'Band', 'Country', 'Label', 'Review', 'Instrument'];
 
-    function ArtistDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Artist, Band, Country, Label) {
+    function ArtistDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Artist, Band, Country, Label, Review, Instrument) {
         var vm = this;
 
         vm.artist = entity;
@@ -18,6 +18,8 @@
         vm.bands = Band.query();
         vm.countries = Country.query();
         vm.labels = Label.query();
+        vm.reviews = Review.query();
+        vm.instruments = Instrument.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

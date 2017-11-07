@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('UserExtDialogController', UserExtDialogController);
 
-    UserExtDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'UserExt'];
+    UserExtDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'UserExt', 'User', 'Album'];
 
-    function UserExtDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, UserExt) {
+    function UserExtDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, UserExt, User, Album) {
         var vm = this;
 
         vm.userExt = entity;
@@ -15,6 +15,8 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
         vm.save = save;
+        vm.users = User.query();
+        vm.albums = Album.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -15,7 +15,8 @@
             "detail": {
                 "title": "Instrument"
             },
-            "nameInstrument": "Name Instrument"
+            "nameInstrument": "Name Instrument",
+            "artist": "Artist"
         }
     }
 }

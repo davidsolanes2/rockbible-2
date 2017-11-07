@@ -31,6 +31,12 @@ public class ValoracionSong implements Serializable {
     @Column(name = "jhi_timestamp")
     private ZonedDateTime timestamp;
 
+    @ManyToOne
+    private Song song;
+
+    @ManyToOne
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -77,6 +83,32 @@ public class ValoracionSong implements Serializable {
 
     public void setTimestamp(ZonedDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Song getSong() {
+        return song;
+    }
+
+    public ValoracionSong song(Song song) {
+        this.song = song;
+        return this;
+    }
+
+    public void setSong(Song song) {
+        this.song = song;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public ValoracionSong user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

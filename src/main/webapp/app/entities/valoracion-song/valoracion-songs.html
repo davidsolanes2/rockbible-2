@@ -22,6 +22,8 @@
                     <th><span data-translate="rockbible2App.valoracionSong.puntuacion">Puntuacion</span></th>
                     <th><span data-translate="rockbible2App.valoracionSong.like">Like</span></th>
                     <th><span data-translate="rockbible2App.valoracionSong.timestamp">Timestamp</span></th>
+                    <th><span data-translate="rockbible2App.valoracionSong.song">Song</span></th>
+                    <th><span data-translate="rockbible2App.valoracionSong.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -31,6 +33,12 @@
                     <td>{{valoracionSong.puntuacion}}</td>
                     <td>{{valoracionSong.like}}</td>
                     <td>{{valoracionSong.timestamp | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="song-detail({id:valoracionSong.song.id})">{{valoracionSong.song.songName}}</a>
+                    </td>
+                    <td>
+                        {{valoracionSong.user.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

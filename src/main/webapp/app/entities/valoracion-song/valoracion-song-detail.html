@@ -16,6 +16,14 @@
         <dd>
             <span>{{vm.valoracionSong.timestamp | date:'medium'}}</span>
         </dd>
+        <dt><span data-translate="rockbible2App.valoracionSong.song">Song</span></dt>
+        <dd>
+            <a ui-sref="song-detail({id:vm.valoracionSong.song.id})">{{vm.valoracionSong.song.songName}}</a>
+        </dd>
+        <dt><span data-translate="rockbible2App.valoracionSong.user">User</span></dt>
+        <dd>
+            {{vm.valoracionSong.user.login}}
+        </dd>
     </dl>
 
     <button type="submit"

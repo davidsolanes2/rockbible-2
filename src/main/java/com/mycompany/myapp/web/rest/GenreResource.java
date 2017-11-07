@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Genre;
+
 import com.mycompany.myapp.repository.GenreRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -84,7 +86,7 @@ public class GenreResource {
     @Timed
     public List<Genre> getAllGenres() {
         log.debug("REST request to get all Genres");
-        return genreRepository.findAll();
+        return genreRepository.findAllWithEagerRelationships();
         }
 
     /**
@@ -97,7 +99,7 @@ public class GenreResource {
     @Timed
     public ResponseEntity<Genre> getGenre(@PathVariable Long id) {
         log.debug("REST request to get Genre : {}", id);
-        Genre genre = genreRepository.findOne(id);
+        Genre genre = genreRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(genre));
     }
 

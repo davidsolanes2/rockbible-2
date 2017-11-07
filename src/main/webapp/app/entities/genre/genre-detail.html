@@ -8,6 +8,12 @@
         <dd>
             <span>{{vm.genre.genreName}}</span>
         </dd>
+        <dt><span data-translate="rockbible2App.genre.genreName">Genre Name</span></dt>
+        <dd>
+            <span ng-repeat="genreName in vm.genre.genreNames">
+                <a ui-sref="band-detail({id: genreName.id})">{{genreName.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"

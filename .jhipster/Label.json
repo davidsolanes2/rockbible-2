@@ -1,6 +1,19 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "band",
+            "otherEntityName": "band",
+            "otherEntityRelationshipName": "label"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "otherEntityRelationshipName": "label"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nameLabel",

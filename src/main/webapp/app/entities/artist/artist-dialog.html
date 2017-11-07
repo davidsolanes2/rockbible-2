@@ -20,6 +20,14 @@
                     />
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="rockbible2App.artist.sexo" for="field_sexo">Sexo</label>
+            <select class="form-control" name="sexo" ng-model="vm.artist.sexo" id="field_sexo">
+                <option value="HOMBRE" data-translate="rockbible2App.Sex.HOMBRE">HOMBRE</option>
+                <option value="MUJER" data-translate="rockbible2App.Sex.MUJER">MUJER</option>
+                <option value="OTROS" data-translate="rockbible2App.Sex.OTROS">OTROS</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="rockbible2App.artist.born" for="field_born">Born</label>
                 <div class="input-group">
                     <input id="field_born" type="text" class="form-control" name="born" uib-datepicker-popup="{{dateformat}}" ng-model="vm.artist.born" is-open="vm.datePickerOpenStatus.born"
@@ -28,6 +36,13 @@
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('born')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                 </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rockbible2App.artist.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.artist.status" id="field_status">
+                <option value="ACTIVO" data-translate="rockbible2App.Status.ACTIVO">ACTIVO</option>
+                <option value="CESADO" data-translate="rockbible2App.Status.CESADO">CESADO</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -47,6 +62,10 @@
             <select class="form-control" id="field_label" name="label" ng-model="vm.artist.label" ng-options="label as label.nameLabel for label in vm.labels track by label.id">
                 <option value=""></option>
             </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="rockbible2App.artist.review" for="field_review">Review</label>
+            <select class="form-control" id="field_review" multiple name="review" ng-model="vm.artist.reviews" ng-options="review as review.reviewName for review in vm.reviews track by review.id"></select>
         </div>
     </div>
     <div class="modal-footer">

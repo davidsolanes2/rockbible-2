@@ -1,9 +1,11 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.Rockbible2App;
+
 import com.mycompany.myapp.domain.Instrument;
 import com.mycompany.myapp.repository.InstrumentRepository;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

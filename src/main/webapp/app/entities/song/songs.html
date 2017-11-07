@@ -21,7 +21,6 @@
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="rockbible2App.song.songName">Song Name</span></th>
                     <th><span data-translate="rockbible2App.song.album">Album</span></th>
-                    <th><span data-translate="rockbible2App.song.valoracionSong">Valoracion Song</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -31,9 +30,6 @@
                     <td>{{song.songName}}</td>
                     <td>
                         <a ui-sref="album-detail({id:song.album.id})">{{song.album.albumName}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="valoracion-song-detail({id:song.valoracionSong.id})">{{song.valoracionSong.puntuacion}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

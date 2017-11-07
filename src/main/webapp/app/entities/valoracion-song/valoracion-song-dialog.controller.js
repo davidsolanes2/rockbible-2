@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('ValoracionSongDialogController', ValoracionSongDialogController);
 
-    ValoracionSongDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ValoracionSong'];
+    ValoracionSongDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ValoracionSong', 'Song', 'User'];
 
-    function ValoracionSongDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ValoracionSong) {
+    function ValoracionSongDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ValoracionSong, Song, User) {
         var vm = this;
 
         vm.valoracionSong = entity;
@@ -15,6 +15,8 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+        vm.songs = Song.query();
+        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

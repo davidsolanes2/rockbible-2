@@ -1,6 +1,15 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "instrument",
+            "relationshipName": "artist",
+            "otherEntityName": "artist",
+            "otherEntityField": "nameArtist",
+            "ownerSide": true
+        }
+    ],
     "fields": [
         {
             "fieldName": "nameInstrument",

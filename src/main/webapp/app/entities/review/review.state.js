@@ -104,7 +104,7 @@
                     resolve: {
                         entity: function () {
                             return {
-                                reiewName: null,
+                                reviewName: null,
                                 id: null
                             };
                         }

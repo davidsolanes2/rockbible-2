@@ -1,9 +1,13 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,8 +30,10 @@ public class Song implements Serializable {
     @ManyToOne
     private Album album;
 
-    @ManyToOne
-    private ValoracionSong valoracionSong;
+    @OneToMany(mappedBy = "song")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ValoracionSong> valoracions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -64,17 +70,29 @@ public class Song implements Serializable {
         this.album = album;
     }
 
-    public ValoracionSong getValoracionSong() {
-        return valoracionSong;
+    public Set<ValoracionSong> getValoracions() {
+        return valoracions;
     }
 
-    public Song valoracionSong(ValoracionSong valoracionSong) {
-        this.valoracionSong = valoracionSong;
+    public Song valoracions(Set<ValoracionSong> valoracionSongs) {
+        this.valoracions = valoracionSongs;
         return this;
     }
 
-    public void setValoracionSong(ValoracionSong valoracionSong) {
-        this.valoracionSong = valoracionSong;
+    public Song addValoracion(ValoracionSong valoracionSong) {
+        this.valoracions.add(valoracionSong);
+        valoracionSong.setSong(this);
+        return this;
+    }
+
+    public Song removeValoracion(ValoracionSong valoracionSong) {
+        this.valoracions.remove(valoracionSong);
+        valoracionSong.setSong(null);
+        return this;
+    }
+
+    public void setValoracions(Set<ValoracionSong> valoracionSongs) {
+        this.valoracions = valoracionSongs;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

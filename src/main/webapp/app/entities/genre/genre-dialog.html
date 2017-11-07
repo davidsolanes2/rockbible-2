@@ -20,6 +20,10 @@
                     />
         </div>
 
+        <div class="form-group">
+            <label data-translate="rockbible2App.genre.genreName" for="field_genreName">Genre Name</label>
+            <select class="form-control" id="field_genreName" multiple name="genreName" ng-model="vm.genre.genreNames" ng-options="band as band.id for band in vm.bands track by band.id"></select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

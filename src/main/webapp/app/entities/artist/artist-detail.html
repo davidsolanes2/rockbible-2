@@ -8,9 +8,17 @@
         <dd>
             <span>{{vm.artist.nameArtist}}</span>
         </dd>
+        <dt><span data-translate="rockbible2App.artist.sexo">Sexo</span></dt>
+        <dd>
+            <span data-translate="{{'rockbible2App.Sex.' + vm.artist.sexo}}">{{vm.artist.sexo}}</span>
+        </dd>
         <dt><span data-translate="rockbible2App.artist.born">Born</span></dt>
         <dd>
             <span>{{vm.artist.born | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="rockbible2App.artist.status">Status</span></dt>
+        <dd>
+            <span data-translate="{{'rockbible2App.Status.' + vm.artist.status}}">{{vm.artist.status}}</span>
         </dd>
         <dt><span data-translate="rockbible2App.artist.band">Band</span></dt>
         <dd>
@@ -23,6 +31,12 @@
         <dt><span data-translate="rockbible2App.artist.label">Label</span></dt>
         <dd>
             <a ui-sref="label-detail({id:vm.artist.label.id})">{{vm.artist.label.nameLabel}}</a>
+        </dd>
+        <dt><span data-translate="rockbible2App.artist.review">Review</span></dt>
+        <dd>
+            <span ng-repeat="review in vm.artist.reviews">
+                <a ui-sref="review-detail({id: review.id})">{{review.reviewName}}</a>{{$last ? '' : ', '}}
+            </span>
         </dd>
     </dl>
 

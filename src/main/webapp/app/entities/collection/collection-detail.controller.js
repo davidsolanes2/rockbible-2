@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('CollectionDetailController', CollectionDetailController);
 
-    CollectionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Collection'];
+    CollectionDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Collection', 'User'];
 
-    function CollectionDetailController($scope, $rootScope, $stateParams, previousState, entity, Collection) {
+    function CollectionDetailController($scope, $rootScope, $stateParams, previousState, entity, Collection, User) {
         var vm = this;
 
         vm.collection = entity;

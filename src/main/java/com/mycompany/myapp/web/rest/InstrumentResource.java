@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Instrument;
+
 import com.mycompany.myapp.repository.InstrumentRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -84,7 +86,7 @@ public class InstrumentResource {
     @Timed
     public List<Instrument> getAllInstruments() {
         log.debug("REST request to get all Instruments");
-        return instrumentRepository.findAll();
+        return instrumentRepository.findAllWithEagerRelationships();
         }
 
     /**
@@ -97,7 +99,7 @@ public class InstrumentResource {
     @Timed
     public ResponseEntity<Instrument> getInstrument(@PathVariable Long id) {
         log.debug("REST request to get Instrument : {}", id);
-        Instrument instrument = instrumentRepository.findOne(id);
+        Instrument instrument = instrumentRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(instrument));
     }
 

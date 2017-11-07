@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.UserExt;
+
 import com.mycompany.myapp.repository.UserExtRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -84,7 +86,7 @@ public class UserExtResource {
     @Timed
     public List<UserExt> getAllUserExts() {
         log.debug("REST request to get all UserExts");
-        return userExtRepository.findAll();
+        return userExtRepository.findAllWithEagerRelationships();
         }
 
     /**
@@ -97,7 +99,7 @@ public class UserExtResource {
     @Timed
     public ResponseEntity<UserExt> getUserExt(@PathVariable Long id) {
         log.debug("REST request to get UserExt : {}", id);
-        UserExt userExt = userExtRepository.findOne(id);
+        UserExt userExt = userExtRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(userExt));
     }
 

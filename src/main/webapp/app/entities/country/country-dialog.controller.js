@@ -5,14 +5,16 @@
         .module('rockbible2App')
         .controller('CountryDialogController', CountryDialogController);
 
-    CountryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Country'];
+    CountryDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Country', 'Band', 'Artist'];
 
-    function CountryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Country) {
+    function CountryDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Country, Band, Artist) {
         var vm = this;
 
         vm.country = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.bands = Band.query();
+        vm.artists = Artist.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

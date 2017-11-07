@@ -1,5 +1,10 @@
-import ch.qos.logback.classic.LoggerContext
+import _root_.io.gatling.core.scenario.Simulation
+import ch.qos.logback.classic.{Level, LoggerContext}
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
 import org.slf4j.LoggerFactory
+
+import scala.concurrent.duration._
 
 /**
  * Performance test for the Review entity.
@@ -63,7 +68,7 @@ class ReviewGatlingTest extends Simulation {
             .exec(http("Create new review")
             .post("/api/reviews")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "reiewName":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "reviewName":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_review_url"))).exitHereIfFailed
             .pause(10)

@@ -8,10 +8,10 @@
             "otherEntityField": "albumName"
         },
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "valoracionSong",
+            "relationshipType": "one-to-many",
+            "relationshipName": "valoracion",
             "otherEntityName": "valoracionSong",
-            "otherEntityField": "puntuacion"
+            "otherEntityRelationshipName": "song"
         }
     ],
     "fields": [
