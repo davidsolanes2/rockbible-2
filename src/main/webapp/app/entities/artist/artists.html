@@ -22,6 +22,8 @@
                     <th><span data-translate="rockbible2App.artist.nameArtist">Name Artist</span></th>
                     <th><span data-translate="rockbible2App.artist.born">Born</span></th>
                     <th><span data-translate="rockbible2App.artist.band">Band</span></th>
+                    <th><span data-translate="rockbible2App.artist.country">Country</span></th>
+                    <th><span data-translate="rockbible2App.artist.label">Label</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -32,6 +34,12 @@
                         <td>{{artist.born | date:'mediumDate'}}</td>
                     <td>
                         <a ui-sref="band-detail({id:artist.band.id})">{{artist.band.nameBand}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="country-detail({id:artist.country.id})">{{artist.country.countryName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="label-detail({id:artist.label.id})">{{artist.label.nameLabel}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -6,6 +6,12 @@
             "relationshipName": "album",
             "otherEntityName": "album",
             "otherEntityField": "albumName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "valoracionSong",
+            "otherEntityName": "valoracionSong",
+            "otherEntityField": "puntuacion"
         }
     ],
     "fields": [

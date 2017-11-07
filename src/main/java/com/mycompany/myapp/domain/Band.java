@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,17 +26,14 @@ public class Band implements Serializable {
     @Column(name = "name_band")
     private String nameBand;
 
-    @Column(name = "location_google_maps")
-    private String locationGoogleMaps;
-
-    @Column(name = "latitude")
-    private Double latitude;
-
-    @Column(name = "logitude")
-    private Double logitude;
-
     @Column(name = "status")
     private Boolean status;
+
+    @ManyToOne
+    private Country country;
+
+    @ManyToOne
+    private Label label;
 
     @OneToMany(mappedBy = "band")
     @JsonIgnore
@@ -66,45 +62,6 @@ public class Band implements Serializable {
         this.nameBand = nameBand;
     }
 
-    public String getLocationGoogleMaps() {
-        return locationGoogleMaps;
-    }
-
-    public Band locationGoogleMaps(String locationGoogleMaps) {
-        this.locationGoogleMaps = locationGoogleMaps;
-        return this;
-    }
-
-    public void setLocationGoogleMaps(String locationGoogleMaps) {
-        this.locationGoogleMaps = locationGoogleMaps;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public Band latitude(Double latitude) {
-        this.latitude = latitude;
-        return this;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLogitude() {
-        return logitude;
-    }
-
-    public Band logitude(Double logitude) {
-        this.logitude = logitude;
-        return this;
-    }
-
-    public void setLogitude(Double logitude) {
-        this.logitude = logitude;
-    }
-
     public Boolean isStatus() {
         return status;
     }
@@ -116,6 +73,32 @@ public class Band implements Serializable {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public Band country(Country country) {
+        this.country = country;
+        return this;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public Band label(Label label) {
+        this.label = label;
+        return this;
+    }
+
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     public Set<Album> getNameAlbums() {
@@ -169,9 +152,6 @@ public class Band implements Serializable {
         return "Band{" +
             "id=" + getId() +
             ", nameBand='" + getNameBand() + "'" +
-            ", locationGoogleMaps='" + getLocationGoogleMaps() + "'" +
-            ", latitude='" + getLatitude() + "'" +
-            ", logitude='" + getLogitude() + "'" +
             ", status='" + isStatus() + "'" +
             "}";
     }

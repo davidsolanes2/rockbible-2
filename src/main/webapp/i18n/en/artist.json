@@ -17,7 +17,9 @@
             },
             "nameArtist": "Name Artist",
             "born": "Born",
-            "band": "Band"
+            "band": "Band",
+            "country": "Country",
+            "label": "Label"
         }
     }
 }

@@ -1,5 +1,4 @@
-import ch.qos.logback.classic.LoggerContext
-import org.slf4j.LoggerFactory
+
 
 /**
  * Performance test for the Band entity.
@@ -63,7 +62,7 @@ class BandGatlingTest extends Simulation {
             .exec(http("Create new band")
             .post("/api/bands")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "nameBand":"SAMPLE_TEXT", "locationGoogleMaps":"SAMPLE_TEXT", "latitude":null, "logitude":null, "status":null}""")).asJSON
+            .body(StringBody("""{"id":null, "nameBand":"SAMPLE_TEXT", "status":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_band_url"))).exitHereIfFailed
             .pause(10)

@@ -22,6 +22,7 @@
                     <th><span data-translate="rockbible2App.album.albumName">Album Name</span></th>
                     <th><span data-translate="rockbible2App.album.numSongs">Num Songs</span></th>
                     <th><span data-translate="rockbible2App.album.band">Band</span></th>
+                    <th><span data-translate="rockbible2App.album.valoracionAlbum">Valoracion Album</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -32,6 +33,9 @@
                     <td>{{album.numSongs}}</td>
                     <td>
                         <a ui-sref="band-detail({id:album.band.id})">{{album.band.nameBand}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="valoracion-album-detail({id:album.valoracionAlbum.id})">{{album.valoracionAlbum.puntuacion}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

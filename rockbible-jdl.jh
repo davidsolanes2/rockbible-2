@@ -19,29 +19,33 @@ entity Status {
 }
 
 entity Album {
-	albumName String
-    numSongs Integer
+	albumName String,
+    numSongs Integer,
+    infoAlbum String
 }
 
 entity Song {
-	songName String
+	songName String,
+	duration Double,
+	lauchDate LocalDate,
+	infoSong String
 }
 
 entity Review {
-	reiewName String
+	reiewName String,
+	creationDate ZonedDateTime
 }
 
 entity Artist {
 	nameArtist String,
-    born LocalDate
+    born LocalDate,
+    infoArtist String
 }
 
 entity Band{
 	nameBand String,
-    locationGoogleMaps String,
-    latitude Double,
-    logitude Double,
-    status Boolean
+    status Boolean,
+    infoBand String
 }
 
 entity Collection {
@@ -82,8 +86,17 @@ entity ValoracionSong{
 relationship ManyToOne {
     Album{band(nameBand)} to Band{nameAlbum},
     Song{album(albumName)} to Album{songName},
-    Artist{band(nameBand)} to Band
+    Artist{band(nameBand)} to Band,
+    Band{country(countryName)} to Country,
+    Artist{country(countryName)} to Country,
+    Band{Label(nameLabel)} to Label,
+    Artist{Label(nameLabel)} to Label,
+    Artist{Label(nameLabel)} to Label,
+    Album{ValoracionAlbum(puntuacion)} to ValoracionAlbum,
+    Song{ValoracionSong(puntuacion)} to ValoracionSong
 }
+
+
 
 
 

@@ -18,6 +18,7 @@
             "albumName": "Album Name",
             "numSongs": "Num Songs",
             "band": "Band",
+            "valoracionAlbum": "Valoracion Album",
             "songName": "Song Name"
         }
     }

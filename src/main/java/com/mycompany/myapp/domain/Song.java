@@ -3,7 +3,6 @@ package com.mycompany.myapp.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -26,6 +25,9 @@ public class Song implements Serializable {
 
     @ManyToOne
     private Album album;
+
+    @ManyToOne
+    private ValoracionSong valoracionSong;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -60,6 +62,19 @@ public class Song implements Serializable {
 
     public void setAlbum(Album album) {
         this.album = album;
+    }
+
+    public ValoracionSong getValoracionSong() {
+        return valoracionSong;
+    }
+
+    public Song valoracionSong(ValoracionSong valoracionSong) {
+        this.valoracionSong = valoracionSong;
+        return this;
+    }
+
+    public void setValoracionSong(ValoracionSong valoracionSong) {
+        this.valoracionSong = valoracionSong;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

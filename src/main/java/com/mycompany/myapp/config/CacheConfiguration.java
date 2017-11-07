@@ -65,6 +65,7 @@ public class CacheConfiguration {
             cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameAlbums", jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.Album.class.getName() + ".songNames", jcacheConfiguration);
             cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".nameArtists", jcacheConfiguration);
+            cm.createCache(com.mycompany.myapp.domain.Band.class.getName() + ".labels", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

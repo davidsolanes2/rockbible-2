@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -32,6 +31,9 @@ public class Album implements Serializable {
 
     @ManyToOne
     private Band band;
+
+    @ManyToOne
+    private ValoracionAlbum valoracionAlbum;
 
     @OneToMany(mappedBy = "album")
     @JsonIgnore
@@ -84,6 +86,19 @@ public class Album implements Serializable {
 
     public void setBand(Band band) {
         this.band = band;
+    }
+
+    public ValoracionAlbum getValoracionAlbum() {
+        return valoracionAlbum;
+    }
+
+    public Album valoracionAlbum(ValoracionAlbum valoracionAlbum) {
+        this.valoracionAlbum = valoracionAlbum;
+        return this;
+    }
+
+    public void setValoracionAlbum(ValoracionAlbum valoracionAlbum) {
+        this.valoracionAlbum = valoracionAlbum;
     }
 
     public Set<Song> getSongNames() {

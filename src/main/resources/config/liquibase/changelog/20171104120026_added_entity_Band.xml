@@ -24,19 +24,15 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="location_google_maps" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="latitude" type="double">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="logitude" type="double">
-                <constraints nullable="true" />
-            </column>
-
             <column name="status" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="country_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="label_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

@@ -16,6 +16,14 @@
         <dd>
             <a ui-sref="band-detail({id:vm.artist.band.id})">{{vm.artist.band.nameBand}}</a>
         </dd>
+        <dt><span data-translate="rockbible2App.artist.country">Country</span></dt>
+        <dd>
+            <a ui-sref="country-detail({id:vm.artist.country.id})">{{vm.artist.country.countryName}}</a>
+        </dd>
+        <dt><span data-translate="rockbible2App.artist.label">Label</span></dt>
+        <dd>
+            <a ui-sref="label-detail({id:vm.artist.label.id})">{{vm.artist.label.nameLabel}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

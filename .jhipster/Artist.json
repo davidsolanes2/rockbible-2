@@ -6,6 +6,18 @@
             "relationshipName": "band",
             "otherEntityName": "band",
             "otherEntityField": "nameBand"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "countryName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "label",
+            "otherEntityName": "label",
+            "otherEntityField": "nameLabel"
         }
     ],
     "fields": [

@@ -39,15 +39,6 @@ public class BandResourceIntTest {
     private static final String DEFAULT_NAME_BAND = "AAAAAAAAAA";
     private static final String UPDATED_NAME_BAND = "BBBBBBBBBB";
 
-    private static final String DEFAULT_LOCATION_GOOGLE_MAPS = "AAAAAAAAAA";
-    private static final String UPDATED_LOCATION_GOOGLE_MAPS = "BBBBBBBBBB";
-
-    private static final Double DEFAULT_LATITUDE = 1D;
-    private static final Double UPDATED_LATITUDE = 2D;
-
-    private static final Double DEFAULT_LOGITUDE = 1D;
-    private static final Double UPDATED_LOGITUDE = 2D;
-
     private static final Boolean DEFAULT_STATUS = false;
     private static final Boolean UPDATED_STATUS = true;
 
@@ -90,9 +81,6 @@ public class BandResourceIntTest {
     public static Band createEntity(EntityManager em) {
         Band band = new Band()
             .nameBand(DEFAULT_NAME_BAND)
-            .locationGoogleMaps(DEFAULT_LOCATION_GOOGLE_MAPS)
-            .latitude(DEFAULT_LATITUDE)
-            .logitude(DEFAULT_LOGITUDE)
             .status(DEFAULT_STATUS);
         return band;
     }
@@ -118,9 +106,6 @@ public class BandResourceIntTest {
         assertThat(bandList).hasSize(databaseSizeBeforeCreate + 1);
         Band testBand = bandList.get(bandList.size() - 1);
         assertThat(testBand.getNameBand()).isEqualTo(DEFAULT_NAME_BAND);
-        assertThat(testBand.getLocationGoogleMaps()).isEqualTo(DEFAULT_LOCATION_GOOGLE_MAPS);
-        assertThat(testBand.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
-        assertThat(testBand.getLogitude()).isEqualTo(DEFAULT_LOGITUDE);
         assertThat(testBand.isStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
@@ -155,9 +140,6 @@ public class BandResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(band.getId().intValue())))
             .andExpect(jsonPath("$.[*].nameBand").value(hasItem(DEFAULT_NAME_BAND.toString())))
-            .andExpect(jsonPath("$.[*].locationGoogleMaps").value(hasItem(DEFAULT_LOCATION_GOOGLE_MAPS.toString())))
-            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
-            .andExpect(jsonPath("$.[*].logitude").value(hasItem(DEFAULT_LOGITUDE.doubleValue())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.booleanValue())));
     }
 
@@ -173,9 +155,6 @@ public class BandResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(band.getId().intValue()))
             .andExpect(jsonPath("$.nameBand").value(DEFAULT_NAME_BAND.toString()))
-            .andExpect(jsonPath("$.locationGoogleMaps").value(DEFAULT_LOCATION_GOOGLE_MAPS.toString()))
-            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
-            .andExpect(jsonPath("$.logitude").value(DEFAULT_LOGITUDE.doubleValue()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.booleanValue()));
     }
 
@@ -198,9 +177,6 @@ public class BandResourceIntTest {
         Band updatedBand = bandRepository.findOne(band.getId());
         updatedBand
             .nameBand(UPDATED_NAME_BAND)
-            .locationGoogleMaps(UPDATED_LOCATION_GOOGLE_MAPS)
-            .latitude(UPDATED_LATITUDE)
-            .logitude(UPDATED_LOGITUDE)
             .status(UPDATED_STATUS);
 
         restBandMockMvc.perform(put("/api/bands")
@@ -213,9 +189,6 @@ public class BandResourceIntTest {
         assertThat(bandList).hasSize(databaseSizeBeforeUpdate);
         Band testBand = bandList.get(bandList.size() - 1);
         assertThat(testBand.getNameBand()).isEqualTo(UPDATED_NAME_BAND);
-        assertThat(testBand.getLocationGoogleMaps()).isEqualTo(UPDATED_LOCATION_GOOGLE_MAPS);
-        assertThat(testBand.getLatitude()).isEqualTo(UPDATED_LATITUDE);
-        assertThat(testBand.getLogitude()).isEqualTo(UPDATED_LOGITUDE);
         assertThat(testBand.isStatus()).isEqualTo(UPDATED_STATUS);
     }
 

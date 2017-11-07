@@ -16,7 +16,8 @@
                 "title": "Song"
             },
             "songName": "Song Name",
-            "album": "Album"
+            "album": "Album",
+            "valoracionSong": "Valoracion Song"
         }
     }
 }
