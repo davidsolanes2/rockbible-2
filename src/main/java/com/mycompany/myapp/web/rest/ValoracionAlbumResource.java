@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.ValoracionAlbum;
 
 import com.mycompany.myapp.repository.ValoracionAlbumRepository;
+import com.mycompany.myapp.service.dto.ValoracionAlbumStats;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -102,6 +103,21 @@ public class ValoracionAlbumResource {
         ValoracionAlbum valoracionAlbum = valoracionAlbumRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(valoracionAlbum));
     }
+
+    @GetMapping("/album-rating-stats/{id}")
+    @Timed
+        public ResponseEntity<ValoracionAlbumStats> getStatsAlbum(@PathVariable Long id){
+
+        ValoracionAlbumStats stats = valoracionAlbumRepository.findAlbumsStats(id);
+
+        if(stats.getAlbum() == null){
+            stats=null;
+
+        }
+
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(stats));
+        }
+
 
     /**
      * DELETE  /valoracion-albums/:id : delete the "id" valoracionAlbum.
