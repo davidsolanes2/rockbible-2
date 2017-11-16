@@ -114,7 +114,6 @@ public class ValoracionAlbumResource {
             stats=null;
 
         }
-
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(stats));
         }
 

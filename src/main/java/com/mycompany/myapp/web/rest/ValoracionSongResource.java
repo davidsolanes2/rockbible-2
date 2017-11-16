@@ -4,6 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.ValoracionSong;
 
 import com.mycompany.myapp.repository.ValoracionSongRepository;
+import com.mycompany.myapp.service.dto.ValoracionAlbumStats;
+import com.mycompany.myapp.service.dto.ValoracionSongStats;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -101,6 +103,19 @@ public class ValoracionSongResource {
         log.debug("REST request to get ValoracionSong : {}", id);
         ValoracionSong valoracionSong = valoracionSongRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(valoracionSong));
+    }
+
+    @GetMapping("/song-rating-stats/{id}")
+    @Timed
+    public ResponseEntity<ValoracionSongStats> getStatsSong(@PathVariable Long id){
+
+        ValoracionSongStats stats = valoracionSongRepository.findSongsStats(id);
+
+        if(stats.getSong() == null){
+            stats=null;
+
+        }
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(stats));
     }
 
     /**

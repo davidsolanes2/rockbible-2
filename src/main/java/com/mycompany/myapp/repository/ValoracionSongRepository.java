@@ -1,7 +1,7 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.ValoracionSong;
-import com.mycompany.myapp.service.dto.ValoracionAlbumStats;
+import com.mycompany.myapp.service.dto.ValoracionSongStats;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -18,9 +18,9 @@ public interface ValoracionSongRepository extends JpaRepository<ValoracionSong, 
     @Query("select valoracion_song from ValoracionSong valoracion_song where valoracion_song.user.login = ?#{principal.username}")
     List<ValoracionSong> findByUserIsCurrentUser();
 
-    @Query("select new com.mycompany.myapp.service.dto.ValoracionAlbumStats(valoracionAlbum.album , " +
-        "avg(valoracionAlbum.puntuacion), max(valoracionAlbum.puntuacion), min(valoracionAlbum.puntuacion)) " +
-        "from ValoracionAlbum valoracionAlbum where valoracionAlbum.album.id = :albumId")
-    ValoracionAlbumStats findAlbumsStats(@Param("albumId") Long Id);
+    @Query("select new com.mycompany.myapp.service.dto.ValoracionSongStats(valoracionSong.song , " +
+        "avg(valoracionSong.puntuacion), max(valoracionSong.puntuacion), min(valoracionSong.puntuacion)) " +
+        "from ValoracionSong valoracionSong where valoracionSong.song.id = :songId")
+    ValoracionSongStats findSongsStats(@Param("songId") Long Id);
 
 }
