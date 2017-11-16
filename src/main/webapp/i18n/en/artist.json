@@ -23,6 +23,7 @@
             "country": "Country",
             "label": "Label",
             "review": "Review",
+            "valoracion": "Valoracion",
             "instrument": "Instrument"
         }
     }

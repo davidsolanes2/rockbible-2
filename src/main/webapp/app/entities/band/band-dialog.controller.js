@@ -5,9 +5,9 @@
         .module('rockbible2App')
         .controller('BandDialogController', BandDialogController);
 
-    BandDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Band', 'Country', 'Label', 'Album', 'Artist', 'Genre'];
+    BandDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Band', 'Country', 'Label', 'Album', 'Artist', 'ValoracionBand', 'Genre'];
 
-    function BandDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Band, Country, Label, Album, Artist, Genre) {
+    function BandDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Band, Country, Label, Album, Artist, ValoracionBand, Genre) {
         var vm = this;
 
         vm.band = entity;
@@ -17,6 +17,7 @@
         vm.labels = Label.query();
         vm.albums = Album.query();
         vm.artists = Artist.query();
+        vm.valoracionbands = ValoracionBand.query();
         vm.genres = Genre.query();
 
         $timeout(function (){

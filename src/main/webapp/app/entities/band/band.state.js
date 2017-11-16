@@ -107,6 +107,9 @@
                         entity: function () {
                             return {
                                 nameBand: null,
+                                locationGoogleMaps: null,
+                                latitude: null,
+                                logitude: null,
                                 status: null,
                                 id: null
                             };

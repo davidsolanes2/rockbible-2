@@ -26,6 +26,12 @@
             "otherEntityRelationshipName": "band"
         },
         {
+            "relationshipType": "one-to-many",
+            "relationshipName": "valoracion",
+            "otherEntityName": "valoracionBand",
+            "otherEntityRelationshipName": "band"
+        },
+        {
             "relationshipType": "many-to-many",
             "relationshipName": "nameBand",
             "otherEntityName": "genre",

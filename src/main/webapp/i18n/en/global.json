@@ -23,6 +23,8 @@
                 "userExt": "User Ext",
                 "valoracionAlbum": "Valoracion Album",
                 "valoracionSong": "Valoracion Song",
+                "valoracionArtist": "Valoracion Artist",
+                "valoracionBand": "Valoracion Band",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

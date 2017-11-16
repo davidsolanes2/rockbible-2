@@ -36,7 +36,7 @@ public class Album implements Serializable {
     @OneToMany(mappedBy = "album")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Song> songs = new HashSet<>();
+    private Set<Song> songNames = new HashSet<>();
 
     @OneToMany(mappedBy = "album")
     @JsonIgnore
@@ -96,29 +96,29 @@ public class Album implements Serializable {
         this.band = band;
     }
 
-    public Set<Song> getSongs() {
-        return songs;
+    public Set<Song> getSongNames() {
+        return songNames;
     }
 
-    public Album songs(Set<Song> songs) {
-        this.songs = songs;
+    public Album songNames(Set<Song> songs) {
+        this.songNames = songs;
         return this;
     }
 
-    public Album addSong(Song song) {
-        this.songs.add(song);
+    public Album addSongName(Song song) {
+        this.songNames.add(song);
         song.setAlbum(this);
         return this;
     }
 
-    public Album removeSong(Song song) {
-        this.songs.remove(song);
+    public Album removeSongName(Song song) {
+        this.songNames.remove(song);
         song.setAlbum(null);
         return this;
     }
 
-    public void setSongs(Set<Song> songs) {
-        this.songs = songs;
+    public void setSongNames(Set<Song> songs) {
+        this.songNames = songs;
     }
 
     public Set<ValoracionAlbum> getValoracions() {

@@ -28,6 +28,12 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "one-to-many",
+            "relationshipName": "valoracion",
+            "otherEntityName": "valoracionArtist",
+            "otherEntityRelationshipName": "artist"
+        },
+        {
             "relationshipType": "many-to-many",
             "relationshipName": "instrument",
             "otherEntityName": "instrument",

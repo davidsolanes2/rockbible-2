@@ -24,6 +24,7 @@
             "label": "Label",
             "nameAlbum": "Name Album",
             "artist": "Artist",
+            "valoracion": "Valoracion",
             "nameBand": "Name Band"
         }
     }

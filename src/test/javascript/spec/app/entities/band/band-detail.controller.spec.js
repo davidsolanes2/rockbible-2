@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Band Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockBand, MockCountry, MockLabel, MockAlbum, MockArtist, MockGenre;
+        var MockEntity, MockPreviousState, MockBand, MockCountry, MockLabel, MockAlbum, MockArtist, MockValoracionBand, MockGenre;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -17,6 +17,7 @@ describe('Controller Tests', function() {
             MockLabel = jasmine.createSpy('MockLabel');
             MockAlbum = jasmine.createSpy('MockAlbum');
             MockArtist = jasmine.createSpy('MockArtist');
+            MockValoracionBand = jasmine.createSpy('MockValoracionBand');
             MockGenre = jasmine.createSpy('MockGenre');
             
 
@@ -30,6 +31,7 @@ describe('Controller Tests', function() {
                 'Label': MockLabel,
                 'Album': MockAlbum,
                 'Artist': MockArtist,
+                'ValoracionBand': MockValoracionBand,
                 'Genre': MockGenre
             };
             createController = function() {

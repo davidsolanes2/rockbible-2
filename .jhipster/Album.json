@@ -9,7 +9,7 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "song",
+            "relationshipName": "songName",
             "otherEntityName": "song",
             "otherEntityRelationshipName": "album"
         },

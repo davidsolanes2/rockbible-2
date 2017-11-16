@@ -20,6 +20,24 @@
                     />
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="rockbible2App.band.locationGoogleMaps" for="field_locationGoogleMaps">Location Google Maps</label>
+            <input type="text" class="form-control" name="locationGoogleMaps" id="field_locationGoogleMaps"
+                    ng-model="vm.band.locationGoogleMaps"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rockbible2App.band.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude"
+                    ng-model="vm.band.latitude"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rockbible2App.band.logitude" for="field_logitude">Logitude</label>
+            <input type="number" class="form-control" name="logitude" id="field_logitude"
+                    ng-model="vm.band.logitude"
+                    />
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="rockbible2App.band.status" for="field_status">Status</label>
             <select class="form-control" name="status" ng-model="vm.band.status" id="field_status">
                 <option value="ACTIVO" data-translate="rockbible2App.Status.ACTIVO">ACTIVO</option>

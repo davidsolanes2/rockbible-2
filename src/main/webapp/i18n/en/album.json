@@ -18,7 +18,7 @@
             "albumName": "Album Name",
             "numSongs": "Num Songs",
             "band": "Band",
-            "song": "Song",
+            "songName": "Song Name",
             "valoracion": "Valoracion",
             "user": "User"
         }

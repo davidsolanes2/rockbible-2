@@ -81,10 +81,22 @@ entity ValoracionSong{
     timestamp ZonedDateTime
 }
 
+entity ValoracionArtist{
+	puntuacion Integer,
+    like Boolean,
+    timestamp ZonedDateTime
+}
+
+entity ValoracionBand{
+	puntuacion Integer,
+    like Boolean,
+    timestamp ZonedDateTime
+}
+
 /*Many To One*/
 relationship ManyToOne {
     Album{band(nameBand)} to Band{nameAlbum},
-    Song{album(albumName)} to Album{song},
+    Song{album(albumName)} to Album{songName},
     Artist{band(nameBand)} to Band{artist},
     Band{country(countryName)} to Country{band},
     Artist{country(countryName)} to Country{artist},
@@ -93,8 +105,12 @@ relationship ManyToOne {
     ValoracionAlbum{album(albumName)} to Album{valoracion},
     ValoracionAlbum{user(login)} to User,
     ValoracionSong{song(songName)} to Song{valoracion},
-    ValoracionSong{user(login)} to User
-
+    ValoracionSong{user(login)} to User,
+    ValoracionArtist{artist(nameArtist)} to Artist{valoracion},
+    ValoracionArtist{user(login)} to User,
+    ValoracionBand{band(nameBand)} to Band{valoracion},
+    ValoracionBand{user(login)} to User
+    
 }
 
 /*One To Many*/
@@ -112,8 +128,6 @@ relationship ManyToMany {
     UserExt{album(albumName)} to Album{user},
     Artist{review(reviewName)} to Review{artist}
 }
-
-
 
 
 

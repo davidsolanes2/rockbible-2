@@ -59,6 +59,11 @@ public class Artist implements Serializable {
                inverseJoinColumns = @JoinColumn(name="reviews_id", referencedColumnName="id"))
     private Set<Review> reviews = new HashSet<>();
 
+    @OneToMany(mappedBy = "artist")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ValoracionArtist> valoracions = new HashSet<>();
+
     @ManyToMany(mappedBy = "artists")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -187,6 +192,31 @@ public class Artist implements Serializable {
 
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public Set<ValoracionArtist> getValoracions() {
+        return valoracions;
+    }
+
+    public Artist valoracions(Set<ValoracionArtist> valoracionArtists) {
+        this.valoracions = valoracionArtists;
+        return this;
+    }
+
+    public Artist addValoracion(ValoracionArtist valoracionArtist) {
+        this.valoracions.add(valoracionArtist);
+        valoracionArtist.setArtist(this);
+        return this;
+    }
+
+    public Artist removeValoracion(ValoracionArtist valoracionArtist) {
+        this.valoracions.remove(valoracionArtist);
+        valoracionArtist.setArtist(null);
+        return this;
+    }
+
+    public void setValoracions(Set<ValoracionArtist> valoracionArtists) {
+        this.valoracions = valoracionArtists;
     }
 
     public Set<Instrument> getInstruments() {

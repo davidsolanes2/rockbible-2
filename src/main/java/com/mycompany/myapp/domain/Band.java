@@ -58,6 +58,11 @@ public class Band implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Artist> artists = new HashSet<>();
 
+    @OneToMany(mappedBy = "band")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ValoracionBand> valoracions = new HashSet<>();
+
     @ManyToMany(mappedBy = "genreNames")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -211,6 +216,31 @@ public class Band implements Serializable {
 
     public void setArtists(Set<Artist> artists) {
         this.artists = artists;
+    }
+
+    public Set<ValoracionBand> getValoracions() {
+        return valoracions;
+    }
+
+    public Band valoracions(Set<ValoracionBand> valoracionBands) {
+        this.valoracions = valoracionBands;
+        return this;
+    }
+
+    public Band addValoracion(ValoracionBand valoracionBand) {
+        this.valoracions.add(valoracionBand);
+        valoracionBand.setBand(this);
+        return this;
+    }
+
+    public Band removeValoracion(ValoracionBand valoracionBand) {
+        this.valoracions.remove(valoracionBand);
+        valoracionBand.setBand(null);
+        return this;
+    }
+
+    public void setValoracions(Set<ValoracionBand> valoracionBands) {
+        this.valoracions = valoracionBands;
     }
 
     public Set<Genre> getNameBands() {

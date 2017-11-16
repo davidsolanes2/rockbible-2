@@ -21,6 +21,8 @@
     <include file="config/liquibase/changelog/20171104120031_added_entity_UserExt.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120032_added_entity_ValoracionAlbum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120033_added_entity_ValoracionSong.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171116120313_added_entity_ValoracionArtist.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171116120314_added_entity_ValoracionBand.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20171104120019_added_entity_constraints_Genre.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120022_added_entity_constraints_Album.xml" relativeToChangelogFile="false"/>
@@ -32,5 +34,7 @@
     <include file="config/liquibase/changelog/20171104120032_added_entity_constraints_ValoracionAlbum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120033_added_entity_constraints_ValoracionSong.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171104120027_added_entity_constraints_Collection.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171116120313_added_entity_constraints_ValoracionArtist.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171116120314_added_entity_constraints_ValoracionBand.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
