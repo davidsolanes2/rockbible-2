@@ -1,6 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Artist;
 import com.mycompany.myapp.domain.Song;
 
 import com.mycompany.myapp.repository.SongRepository;
@@ -87,7 +88,15 @@ public class SongResource {
     public List<Song> getAllSongs() {
         log.debug("REST request to get all Songs");
         return songRepository.findAll();
-        }
+    }
+
+    @GetMapping("/songs-by-name/{nombre}")
+    @Timed
+    public ResponseEntity<List<Song>> findSongByName(@PathVariable String nombre){
+        log.debug("REST request to get Artist : {}", nombre);
+        List<Song> songs =  songRepository.findBySongNameContains(nombre);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(songs));
+    }
 
     /**
      * GET  /songs/:id : get the "id" song.

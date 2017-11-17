@@ -89,6 +89,14 @@ public class ArtistResource {
         return artistRepository.findAllWithEagerRelationships();
         }
 
+    @GetMapping("/artist/{nombre}")
+    @Timed
+    public ResponseEntity<Artist> getArtistbyNombre(@PathVariable String nombre){
+        log.debug("REST request to get Artist : {}", nombre);
+        Artist artist = (Artist) artistRepository.findOneByNameArtistContaining(nombre);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(artist));
+    }
+
     /**
      * GET  /artists/:id : get the "id" artist.
      *
