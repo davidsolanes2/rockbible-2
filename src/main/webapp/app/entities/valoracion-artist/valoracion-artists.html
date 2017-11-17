@@ -1,0 +1,68 @@
+<div>
+    <h2 data-translate="rockbible2App.valoracionArtist.home.title">Valoracion Artists</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="valoracion-artist.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="rockbible2App.valoracionArtist.home.createLabel">
+                        Create new Valoracion Artist
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="rockbible2App.valoracionArtist.puntuacion">Puntuacion</span></th>
+                    <th><span data-translate="rockbible2App.valoracionArtist.like">Like</span></th>
+                    <th><span data-translate="rockbible2App.valoracionArtist.timestamp">Timestamp</span></th>
+                    <th><span data-translate="rockbible2App.valoracionArtist.artist">Artist</span></th>
+                    <th><span data-translate="rockbible2App.valoracionArtist.user">User</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="valoracionArtist in vm.valoracionArtists track by valoracionArtist.id">
+                    <td><a ui-sref="valoracion-artist-detail({id:valoracionArtist.id})">{{valoracionArtist.id}}</a></td>
+                    <td>{{valoracionArtist.puntuacion}}</td>
+                    <td>{{valoracionArtist.like}}</td>
+                    <td>{{valoracionArtist.timestamp | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="artist-detail({id:valoracionArtist.artist.id})">{{valoracionArtist.artist.nameArtist}}</a>
+                    </td>
+                    <td>
+                        {{valoracionArtist.user.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="valoracion-artist-detail({id:valoracionArtist.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="valoracion-artist.edit({id:valoracionArtist.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="valoracion-artist.delete({id:valoracionArtist.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

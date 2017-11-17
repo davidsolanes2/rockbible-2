@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="rockbible2App.valoracionArtist.detail.title">Valoracion Artist</span> {{vm.valoracionArtist.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="rockbible2App.valoracionArtist.puntuacion">Puntuacion</span></dt>
+        <dd>
+            <span>{{vm.valoracionArtist.puntuacion}}</span>
+        </dd>
+        <dt><span data-translate="rockbible2App.valoracionArtist.like">Like</span></dt>
+        <dd>
+            <span>{{vm.valoracionArtist.like}}</span>
+        </dd>
+        <dt><span data-translate="rockbible2App.valoracionArtist.timestamp">Timestamp</span></dt>
+        <dd>
+            <span>{{vm.valoracionArtist.timestamp | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="rockbible2App.valoracionArtist.artist">Artist</span></dt>
+        <dd>
+            <a ui-sref="artist-detail({id:vm.valoracionArtist.artist.id})">{{vm.valoracionArtist.artist.nameArtist}}</a>
+        </dd>
+        <dt><span data-translate="rockbible2App.valoracionArtist.user">User</span></dt>
+        <dd>
+            {{vm.valoracionArtist.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="valoracion-artist-detail.edit({id:vm.valoracionArtist.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
