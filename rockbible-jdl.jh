@@ -102,15 +102,19 @@ relationship ManyToOne {
     Artist{country(countryName)} to Country{artist},
     Band{label(nameLabel)} to Label{band},
     Artist{label(nameLabel)} to Label{artist},
+
     ValoracionAlbum{album(albumName)} to Album{valoracion},
     ValoracionAlbum{user(login)} to User,
+
     ValoracionSong{song(songName)} to Song{valoracion},
     ValoracionSong{user(login)} to User,
+
     ValoracionArtist{artist(nameArtist)} to Artist{valoracion},
     ValoracionArtist{user(login)} to User,
+
     ValoracionBand{band(nameBand)} to Band{valoracion},
     ValoracionBand{user(login)} to User
-    
+
 }
 
 /*One To Many*/
