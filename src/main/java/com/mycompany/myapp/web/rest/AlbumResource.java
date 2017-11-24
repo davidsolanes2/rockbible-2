@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Album;
 
+import com.mycompany.myapp.domain.Band;
 import com.mycompany.myapp.repository.AlbumRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -103,6 +104,21 @@ public class AlbumResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(album));
     }
 
+    @GetMapping("/albums-by-band/{bandaNombre}")
+    @Timed
+    public ResponseEntity<List<Album>> getAlbumsbyBandName(@PathVariable String bandaNombre){
+        log.debug("REST request to get Artist : {}", bandaNombre);
+        List<Album> albums = albumRepository.findByBand_NameBand(bandaNombre);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(albums));
+    }
+
+    @GetMapping("/albums-by-band-containing/{bandaNombre}")
+    @Timed
+    public ResponseEntity<List<Album>> getAlbumsbyBandNameContaining(@PathVariable String bandaNombre){
+        log.debug("REST request to get Artist : {}", bandaNombre);
+        List<Album> albums = albumRepository.findByBand_NameBandContaining(bandaNombre);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(albums));
+    }
     /**
      * DELETE  /albums/:id : delete the "id" album.
      *
