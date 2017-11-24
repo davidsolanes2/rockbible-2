@@ -97,6 +97,8 @@ entity ValoracionBand{
 relationship ManyToOne {
     Album{band(nameBand)} to Band{nameAlbum},
     Song{album(albumName)} to Album{songName},
+    Song{genre(genreName)} to Genre{songName},
+    Band{genre(genreName)} to Genre{nameBand},
     Artist{band(nameBand)} to Band{artist},
     Band{country(countryName)} to Country{band},
     Artist{country(countryName)} to Country{artist},
@@ -127,7 +129,6 @@ relationship OneToOne {
 
 /*Many To Many*/
 relationship ManyToMany {
-	Genre{genreName} to Band{nameBand},
     Instrument{artist(nameArtist)} to Artist{instrument},
     UserExt{album(albumName)} to Album{user},
     Artist{review(reviewName)} to Review{artist}

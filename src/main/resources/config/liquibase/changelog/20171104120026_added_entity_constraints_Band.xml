@@ -8,6 +8,12 @@
     -->
     <changeSet id="20171104120026-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="genre_id"
+                                 baseTableName="band"
+                                 constraintName="fk_band_genre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="genre"/>
+
         <addForeignKeyConstraint baseColumnNames="country_id"
                                  baseTableName="band"
                                  constraintName="fk_band_country_id"

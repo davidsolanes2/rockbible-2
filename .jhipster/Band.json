@@ -3,6 +3,12 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
+            "relationshipName": "genre",
+            "otherEntityName": "genre",
+            "otherEntityField": "genreName"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "country",
             "otherEntityName": "country",
             "otherEntityField": "countryName"
@@ -30,13 +36,6 @@
             "relationshipName": "valoracion",
             "otherEntityName": "valoracionBand",
             "otherEntityRelationshipName": "band"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "relationshipName": "nameBand",
-            "otherEntityName": "genre",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "genreName"
         }
     ],
     "fields": [

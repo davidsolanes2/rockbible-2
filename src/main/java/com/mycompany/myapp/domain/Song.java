@@ -30,6 +30,9 @@ public class Song implements Serializable {
     @ManyToOne
     private Album album;
 
+    @ManyToOne
+    private Genre genre;
+
     @OneToMany(mappedBy = "song")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -68,6 +71,19 @@ public class Song implements Serializable {
 
     public void setAlbum(Album album) {
         this.album = album;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public Song genre(Genre genre) {
+        this.genre = genre;
+        return this;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public Set<ValoracionSong> getValoracions() {

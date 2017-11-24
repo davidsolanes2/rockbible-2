@@ -43,6 +43,9 @@ public class Band implements Serializable {
     private Status status;
 
     @ManyToOne
+    private Genre genre;
+
+    @ManyToOne
     private Country country;
 
     @ManyToOne
@@ -62,11 +65,6 @@ public class Band implements Serializable {
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ValoracionBand> valoracions = new HashSet<>();
-
-    @ManyToMany(mappedBy = "genreNames")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Genre> nameBands = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -140,6 +138,19 @@ public class Band implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public Band genre(Genre genre) {
+        this.genre = genre;
+        return this;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public Country getCountry() {
@@ -241,31 +252,6 @@ public class Band implements Serializable {
 
     public void setValoracions(Set<ValoracionBand> valoracionBands) {
         this.valoracions = valoracionBands;
-    }
-
-    public Set<Genre> getNameBands() {
-        return nameBands;
-    }
-
-    public Band nameBands(Set<Genre> genres) {
-        this.nameBands = genres;
-        return this;
-    }
-
-    public Band addNameBand(Genre genre) {
-        this.nameBands.add(genre);
-        genre.getGenreNames().add(this);
-        return this;
-    }
-
-    public Band removeNameBand(Genre genre) {
-        this.nameBands.remove(genre);
-        genre.getGenreNames().remove(this);
-        return this;
-    }
-
-    public void setNameBands(Set<Genre> genres) {
-        this.nameBands = genres;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

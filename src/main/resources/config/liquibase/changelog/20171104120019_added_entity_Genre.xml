@@ -29,17 +29,6 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
-        <createTable tableName="genre_genre_name">
-            <column name="genre_names_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="genres_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="genres_id, genre_names_id" tableName="genre_genre_name"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

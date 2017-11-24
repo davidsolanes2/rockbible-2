@@ -1,5 +1,6 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,12 +27,15 @@ public class Genre implements Serializable {
     @Column(name = "genre_name")
     private String genreName;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "genre")
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "genre_genre_name",
-               joinColumns = @JoinColumn(name="genres_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="genre_names_id", referencedColumnName="id"))
-    private Set<Band> genreNames = new HashSet<>();
+    private Set<Song> songNames = new HashSet<>();
+
+    @OneToMany(mappedBy = "genre")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Band> nameBands = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,29 +59,54 @@ public class Genre implements Serializable {
         this.genreName = genreName;
     }
 
-    public Set<Band> getGenreNames() {
-        return genreNames;
+    public Set<Song> getSongNames() {
+        return songNames;
     }
 
-    public Genre genreNames(Set<Band> bands) {
-        this.genreNames = bands;
+    public Genre songNames(Set<Song> songs) {
+        this.songNames = songs;
         return this;
     }
 
-    public Genre addGenreName(Band band) {
-        this.genreNames.add(band);
-        band.getNameBands().add(this);
+    public Genre addSongName(Song song) {
+        this.songNames.add(song);
+        song.setGenre(this);
         return this;
     }
 
-    public Genre removeGenreName(Band band) {
-        this.genreNames.remove(band);
-        band.getNameBands().remove(this);
+    public Genre removeSongName(Song song) {
+        this.songNames.remove(song);
+        song.setGenre(null);
         return this;
     }
 
-    public void setGenreNames(Set<Band> bands) {
-        this.genreNames = bands;
+    public void setSongNames(Set<Song> songs) {
+        this.songNames = songs;
+    }
+
+    public Set<Band> getNameBands() {
+        return nameBands;
+    }
+
+    public Genre nameBands(Set<Band> bands) {
+        this.nameBands = bands;
+        return this;
+    }
+
+    public Genre addNameBand(Band band) {
+        this.nameBands.add(band);
+        band.setGenre(this);
+        return this;
+    }
+
+    public Genre removeNameBand(Band band) {
+        this.nameBands.remove(band);
+        band.setGenre(null);
+        return this;
+    }
+
+    public void setNameBands(Set<Band> bands) {
+        this.nameBands = bands;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

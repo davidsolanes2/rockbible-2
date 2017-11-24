@@ -5,15 +5,16 @@
         .module('rockbible2App')
         .controller('SongDialogController', SongDialogController);
 
-    SongDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Song', 'Album', 'ValoracionSong'];
+    SongDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Song', 'Album', 'Genre', 'ValoracionSong'];
 
-    function SongDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Song, Album, ValoracionSong) {
+    function SongDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Song, Album, Genre, ValoracionSong) {
         var vm = this;
 
         vm.song = entity;
         vm.clear = clear;
         vm.save = save;
         vm.albums = Album.query();
+        vm.genres = Genre.query();
         vm.valoracionsongs = ValoracionSong.query();
 
         $timeout(function (){

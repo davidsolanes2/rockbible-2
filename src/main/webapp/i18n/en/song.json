@@ -17,6 +17,7 @@
             },
             "songName": "Song Name",
             "album": "Album",
+            "genre": "Genre",
             "valoracion": "Valoracion"
         }
     }

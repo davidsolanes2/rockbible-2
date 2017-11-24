@@ -20,12 +20,12 @@
             "latitude": "Latitude",
             "logitude": "Logitude",
             "status": "Status",
+            "genre": "Genre",
             "country": "Country",
             "label": "Label",
             "nameAlbum": "Name Album",
             "artist": "Artist",
-            "valoracion": "Valoracion",
-            "nameBand": "Name Band"
+            "valoracion": "Valoracion"
         }
     }
 }

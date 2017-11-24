@@ -8,6 +8,12 @@
             "otherEntityField": "albumName"
         },
         {
+            "relationshipType": "many-to-one",
+            "relationshipName": "genre",
+            "otherEntityName": "genre",
+            "otherEntityField": "genreName"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "valoracion",
             "otherEntityName": "valoracionSong",

@@ -2,12 +2,16 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "nameBand",
-            "relationshipName": "genreName",
+            "relationshipType": "one-to-many",
+            "relationshipName": "songName",
+            "otherEntityName": "song",
+            "otherEntityRelationshipName": "genre"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "nameBand",
             "otherEntityName": "band",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "otherEntityRelationshipName": "genre"
         }
     ],
     "fields": [

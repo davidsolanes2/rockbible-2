@@ -21,6 +21,7 @@
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="rockbible2App.song.songName">Song Name</span></th>
                     <th><span data-translate="rockbible2App.song.album">Album</span></th>
+                    <th><span data-translate="rockbible2App.song.genre">Genre</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,6 +31,9 @@
                     <td>{{song.songName}}</td>
                     <td>
                         <a ui-sref="album-detail({id:song.album.id})">{{song.album.albumName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="genre-detail({id:song.genre.id})">{{song.genre.genreName}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

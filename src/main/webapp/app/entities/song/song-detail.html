@@ -12,6 +12,10 @@
         <dd>
             <a ui-sref="album-detail({id:vm.song.album.id})">{{vm.song.album.albumName}}</a>
         </dd>
+        <dt><span data-translate="rockbible2App.song.genre">Genre</span></dt>
+        <dd>
+            <a ui-sref="genre-detail({id:vm.song.genre.id})">{{vm.song.genre.genreName}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

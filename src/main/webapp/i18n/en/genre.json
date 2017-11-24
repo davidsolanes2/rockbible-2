@@ -16,7 +16,8 @@
                 "title": "Genre"
             },
             "genreName": "Genre Name",
-            "genreName": "Genre Name"
+            "songName": "Song Name",
+            "nameBand": "Name Band"
         }
     }
 }

@@ -26,6 +26,12 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label data-translate="rockbible2App.song.genre" for="field_genre">Genre</label>
+            <select class="form-control" id="field_genre" name="genre" ng-model="vm.song.genre" ng-options="genre as genre.genreName for genre in vm.genres track by genre.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
