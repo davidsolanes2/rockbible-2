@@ -1,8 +1,10 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Album;
 import com.mycompany.myapp.domain.Artist;
 
+import com.mycompany.myapp.domain.Band;
 import com.mycompany.myapp.repository.ArtistRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -124,4 +126,6 @@ public class ArtistResource {
         artistRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
 }
