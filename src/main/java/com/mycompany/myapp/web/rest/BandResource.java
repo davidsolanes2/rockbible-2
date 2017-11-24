@@ -2,7 +2,6 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Band;
-
 import com.mycompany.myapp.repository.BandRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -11,10 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -115,5 +112,16 @@ public class BandResource {
         log.debug("REST request to delete Band : {}", id);
         bandRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+    * 02-Buscar banda por nombre.
+    */
+    @GetMapping("/band-by-name/{nombre}")
+    @Timed
+    public ResponseEntity<List<Band>> getBandbyNombre(@PathVariable String nombre){
+        log.debug("REST request to get Band : {}", nombre);
+        List<Band> bands = bandRepository.findOneByNameBandContaining(nombre);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(bands));
     }
 }
